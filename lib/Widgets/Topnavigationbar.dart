@@ -1,5 +1,3 @@
-// import 'dart:html';
-
 import 'package:araz_mobile_application/Constants/Colors.dart';
 import 'package:araz_mobile_application/Helper/theme_helper.dart';
 import 'package:flutter/cupertino.dart';
@@ -7,9 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 Drawer Topnavigationbar(context, _drawerIconSize, _drawerFontSize) {
-  // final BuildContext context;
-  // final int _drawerIconSize;
-  // final int _drawerFontSize;
   return Drawer(
     child: Container(
       decoration: BoxDecoration(
@@ -21,9 +16,6 @@ Drawer Topnavigationbar(context, _drawerIconSize, _drawerFontSize) {
             1.0
           ],
               colors: [
-            // HexColor('#03fc90'),
-            // HexColor('#41fc03'),
-
             Theme.of(context).primaryColor.withOpacity(0),
             Theme.of(context).accentColor.withOpacity(0),
           ])),
@@ -41,7 +33,7 @@ Drawer Topnavigationbar(context, _drawerIconSize, _drawerFontSize) {
             ),
             child: Container(
               alignment: Alignment.bottomLeft,
-              child: new Image.asset(
+              child: Image.asset(
                 "lib/assets/images/title.png",
                 width: 470.0,
                 height: 470.0,
@@ -54,17 +46,14 @@ Drawer Topnavigationbar(context, _drawerIconSize, _drawerFontSize) {
               size: _drawerIconSize,
               // color: Colors.black,
             ),
-            title: Text(
+            title: const Text(
               'AddressBook',
               style: TextStyle(
                 fontSize: 17,
                 // color: Theme.of(context).accentColor,
               ),
             ),
-            onTap: () {
-              // Navigator.push(context,
-              //     MaterialPageRoute(builder: ((context) => SettingPage())));
-            },
+            onTap: () {},
           ),
           Divider(
             color: Theme.of(context).primaryColor,
@@ -76,7 +65,7 @@ Drawer Topnavigationbar(context, _drawerIconSize, _drawerFontSize) {
               size: _drawerIconSize,
               // color: Colors.black,
             ),
-            title: Text(
+            title: const Text(
               'Payment',
               style: TextStyle(
                 fontSize: 17,
@@ -98,7 +87,7 @@ Drawer Topnavigationbar(context, _drawerIconSize, _drawerFontSize) {
               size: _drawerIconSize,
               // color: Colors.black,
             ),
-            title: Text(
+            title: const Text(
               'Your Order',
               style: TextStyle(
                 fontSize: 17,
@@ -120,22 +109,15 @@ Drawer Topnavigationbar(context, _drawerIconSize, _drawerFontSize) {
               size: _drawerIconSize,
               // color: Colors.black,
             ),
-            title: Text(
+            title: const Text(
               'security',
               style: TextStyle(
                 fontSize: 17,
                 // color: Theme.of(context).accentColor,
               ),
             ),
-            onTap: () {
-              // Navigator.push(context,
-              //     MaterialPageRoute(builder: ((context) => SettingPage())));
-            },
+            onTap: () {},
           ),
-          // Divider(
-          //   color: Theme.of(context).primaryColor,
-          //   height: 1,
-          // ),
           Divider(
             color: Theme.of(context).primaryColor,
             height: 1,

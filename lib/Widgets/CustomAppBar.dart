@@ -61,11 +61,11 @@ AppBar CustomAppBar(context, Titletext) {
                   color: Color.fromARGB(255, 28, 25, 19),
                   borderRadius: BorderRadius.circular(6),
                 ),
-                constraints: BoxConstraints(
+                constraints: const BoxConstraints(
                   minWidth: 12,
                   minHeight: 12,
                 ),
-                child: Text(
+                child: const Text(
                   '3',
                   style: TextStyle(
                       color: Colors.white,
@@ -106,7 +106,7 @@ AppBar CustomAppBar(context, Titletext) {
                   minWidth: 12,
                   minHeight: 12,
                 ),
-                child: Text(
+                child: const Text(
                   '2',
                   style: TextStyle(
                       color: Colors.white,

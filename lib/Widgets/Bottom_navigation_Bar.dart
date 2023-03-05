@@ -40,7 +40,7 @@ class _Bottom_navigation_BarState extends State<Bottom_navigation_Bar> {
         items: [
           BottomNavigationBarItem(
             tooltip: "Home",
-            icon: new Icon(
+            icon: Icon(
               Icons.home,
               color: tdwhite,
             ),
@@ -50,7 +50,7 @@ class _Bottom_navigation_BarState extends State<Bottom_navigation_Bar> {
           ),
           BottomNavigationBarItem(
               tooltip: "Cart",
-              icon: new Icon(
+              icon: Icon(
                 Icons.shopping_cart,
                 color: tdwhite,
               ),

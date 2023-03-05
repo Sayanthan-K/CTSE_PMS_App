@@ -37,8 +37,8 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: new BoxDecoration(
-        gradient: new LinearGradient(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
           colors: [
             Theme.of(context).accentColor,
             Theme.of(context).primaryColor
@@ -59,7 +59,7 @@ class _SplashScreenState extends State<SplashScreen> {
             child: Center(
               child: ClipOval(
                 child: Container(
-                  child: new Image.asset(
+                  child: Image.asset(
                     "lib/assets/images/title.png",
                     width: 180.0,
                     height: 180.0,
