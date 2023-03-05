@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:araz_mobile_application/Constants/Colors.dart';
 import 'package:araz_mobile_application/Screens/Home.dart';
+import 'package:araz_mobile_application/Widgets/Bottom_navigation_Bar.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -20,7 +21,7 @@ class _SplashScreenState extends State<SplashScreen> {
     new Timer(const Duration(milliseconds: 2000), () {
       setState(() {
         Navigator.of(context).pushAndRemoveUntil(
-            MaterialPageRoute(builder: (context) => HomePge()),
+            MaterialPageRoute(builder: (context) => Bottom_navigation_Bar()),
             (route) => false);
       });
     });

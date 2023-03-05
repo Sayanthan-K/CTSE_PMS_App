@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 const Color tdRed = Color(0xFFDA4040);
+const Color tdwhite = Colors.white;
 const Color tdgreen = Color.fromARGB(255, 34, 252, 78);
 const Color tdBlue = Color(0xFF5F52EE);
 const Color tdBlack = Color(0xFF3A3A3A);

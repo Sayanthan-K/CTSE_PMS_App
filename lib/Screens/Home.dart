@@ -1,21 +1,24 @@
+import 'package:araz_mobile_application/Widgets/CustomAppBar.dart';
+import 'package:araz_mobile_application/Widgets/Topnavigationbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
-class HomePge extends StatefulWidget {
-  const HomePge({super.key});
+class Home extends StatefulWidget {
+  const Home({super.key});
 
   @override
-  State<HomePge> createState() => _HomePgeState();
+  State<Home> createState() => _HomeState();
 }
 
-class _HomePgeState extends State<HomePge> {
+class _HomeState extends State<Home> {
+  double _drawerIconSize = 24;
+  double _drawerFontSize = 17;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Home"),
-      ),
+      appBar: CustomAppBar(context, "Home"),
+      drawer: Topnavigationbar(context, _drawerIconSize, _drawerFontSize),
       body: Container(),
     );
   }
