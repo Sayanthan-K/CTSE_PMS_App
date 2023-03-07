@@ -1,3 +1,4 @@
+import 'package:araz_mobile_application/Screens/Navigations.dart';
 import 'package:araz_mobile_application/Widgets/CustomAppBar.dart';
 import 'package:araz_mobile_application/Widgets/Topnavigationbar.dart';
 import 'package:flutter/material.dart';
@@ -17,9 +18,9 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(context, "Home"),
+      appBar: CustomAppBar(context, "Pre-school Admin panel"),
       drawer: Topnavigationbar(context, _drawerIconSize, _drawerFontSize),
-      body: Container(),
+      body: Navigations(),
     );
   }
 }

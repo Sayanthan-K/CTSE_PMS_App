@@ -7,16 +7,16 @@ AppBar CustomAppBar(context, Titletext) {
   double _drawerFontSize = 17;
   return AppBar(
     title: Row(children: [
-      Container(
-        alignment: Alignment.center,
-        width: 29,
-        height: 26,
-        margin: EdgeInsets.symmetric(vertical: 14, horizontal: 10),
-        padding: EdgeInsets.all(1),
-        child: Image.asset(
-          "lib/assets/images/logo.png",
-        ),
-      ),
+      // Container(
+      //   alignment: Alignment.center,
+      //   width: 49,
+      //   height: 36,
+      //   margin: EdgeInsets.symmetric(vertical: 14, horizontal: 10),
+      //   padding: EdgeInsets.all(0),
+      //   child: Image.asset(
+      //     "lib/assets/images/logoK.png",
+      //   ),
+      // ),
       Text(
         Titletext,
         style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
@@ -37,47 +37,6 @@ AppBar CustomAppBar(context, Titletext) {
           ])),
     ),
     actions: [
-      Container(
-        margin: EdgeInsets.only(
-          top: 8,
-          right: 16,
-        ),
-        child: Stack(
-          children: <Widget>[
-            IconButton(
-              icon: Icon(Icons.favorite),
-              iconSize: 30,
-              onPressed: () => {
-                // Navigator.of(context).push(MaterialPageRoute(
-                //   builder: (context) => Notification_pages(),
-                // ))
-              },
-            ),
-            Positioned(
-              right: 0,
-              child: Container(
-                padding: EdgeInsets.all(3),
-                decoration: BoxDecoration(
-                  color: Color.fromARGB(255, 28, 25, 19),
-                  borderRadius: BorderRadius.circular(6),
-                ),
-                constraints: const BoxConstraints(
-                  minWidth: 12,
-                  minHeight: 12,
-                ),
-                child: const Text(
-                  '3',
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 12,
-                      fontWeight: FontWeight.bold),
-                  textAlign: TextAlign.center,
-                ),
-              ),
-            )
-          ],
-        ),
-      ),
       Container(
         margin: EdgeInsets.only(
           top: 8,

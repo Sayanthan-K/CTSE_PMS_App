@@ -34,83 +34,20 @@ Drawer Topnavigationbar(context, _drawerIconSize, _drawerFontSize) {
             child: Container(
               alignment: Alignment.bottomLeft,
               child: Image.asset(
-                "lib/assets/images/title.png",
-                width: 470.0,
-                height: 470.0,
+                "lib/assets/images/logoW.png",
+                width: 440.0,
+                height: 440.0,
               ),
             ),
           ),
           ListTile(
             leading: Icon(
-              Icons.my_library_books,
+              Icons.rule,
               size: _drawerIconSize,
               // color: Colors.black,
             ),
             title: const Text(
-              'AddressBook',
-              style: TextStyle(
-                fontSize: 17,
-                // color: Theme.of(context).accentColor,
-              ),
-            ),
-            onTap: () {},
-          ),
-          Divider(
-            color: Theme.of(context).primaryColor,
-            height: 1,
-          ),
-          ListTile(
-            leading: Icon(
-              Icons.payment,
-              size: _drawerIconSize,
-              // color: Colors.black,
-            ),
-            title: const Text(
-              'Payment',
-              style: TextStyle(
-                fontSize: 17,
-                // color: Theme.of(context).accentColor,
-              ),
-            ),
-            onTap: () {
-              // Navigator.push(context,
-              //     MaterialPageRoute(builder: ((context) => SettingPage())));
-            },
-          ),
-          Divider(
-            color: Theme.of(context).primaryColor,
-            height: 1,
-          ),
-          ListTile(
-            leading: Icon(
-              Icons.delivery_dining_outlined,
-              size: _drawerIconSize,
-              // color: Colors.black,
-            ),
-            title: const Text(
-              'Your Order',
-              style: TextStyle(
-                fontSize: 17,
-                // color: Theme.of(context).accentColor,
-              ),
-            ),
-            onTap: () {
-              // Navigator.push(context,
-              //     MaterialPageRoute(builder: ((context) => SettingPage())));
-            },
-          ),
-          Divider(
-            color: Theme.of(context).primaryColor,
-            height: 1,
-          ),
-          ListTile(
-            leading: Icon(
-              Icons.security,
-              size: _drawerIconSize,
-              // color: Colors.black,
-            ),
-            title: const Text(
-              'security',
+              'Rules and Regulations ',
               style: TextStyle(
                 fontSize: 17,
                 // color: Theme.of(context).accentColor,

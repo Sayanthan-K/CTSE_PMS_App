@@ -1,8 +1,7 @@
-import 'package:araz_mobile_application/Constants/Colors.dart';
-import 'package:araz_mobile_application/Screens/Cart.dart';
-import 'package:araz_mobile_application/Screens/Home.dart';
-import 'package:araz_mobile_application/Screens/Profile_Page.dart';
 import 'package:flutter/material.dart';
+import '../Constants/Colors.dart';
+import '../Screens/Home.dart';
+import '../Screens/Profile_Page.dart';
 
 class Bottom_navigation_Bar extends StatefulWidget {
   static const String routeName = '/home';
@@ -18,7 +17,6 @@ class _Bottom_navigation_BarState extends State<Bottom_navigation_Bar> {
 
   final List<Widget> _children = [
     Home(),
-    Cart(),
     ProfilePage(),
   ];
 
@@ -48,14 +46,6 @@ class _Bottom_navigation_BarState extends State<Bottom_navigation_Bar> {
             label: 'Home',
             // backgroundColor: Colors.black38
           ),
-          BottomNavigationBarItem(
-              tooltip: "Cart",
-              icon: Icon(
-                Icons.shopping_cart,
-                color: tdwhite,
-              ),
-              //     // title: new Text('Search'),
-              label: 'Cart'),
           BottomNavigationBarItem(
               tooltip: "Profile",
               icon: Icon(

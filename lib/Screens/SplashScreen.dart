@@ -51,16 +51,16 @@ class _SplashScreenState extends State<SplashScreen> {
       ),
       child: AnimatedOpacity(
         opacity: _isVisible ? 1.0 : 0,
-        duration: Duration(milliseconds: 1200),
+        duration: Duration(milliseconds: 1250),
         child: Center(
           child: Container(
-            height: 160.0,
-            width: 160.0,
+            height: 180.0,
+            width: 180.0,
             child: Center(
               child: ClipOval(
                 child: Container(
                   child: Image.asset(
-                    "lib/assets/images/title.png",
+                    "lib/assets/images/logoW.png",
                     width: 180.0,
                     height: 180.0,
                   ),
@@ -69,7 +69,7 @@ class _SplashScreenState extends State<SplashScreen> {
             ),
             decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: buttoncolor,
+                color: logooutcolor,
                 boxShadow: [
                   BoxShadow(
                     color: Colors.black.withOpacity(0.3),

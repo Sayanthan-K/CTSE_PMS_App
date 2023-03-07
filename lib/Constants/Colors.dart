@@ -10,4 +10,4 @@ const Color tdgrey = Color(0xFF717171);
 const Color tdBGColor = Color.fromRGBO(238, 239, 245, 1);
 Color primaryColor = HexColor('#1A374D');
 Color accentColor = HexColor('#406882');
-Color buttoncolor = Color.fromARGB(255, 0, 209, 216);
+Color logooutcolor = Color.fromARGB(255, 128, 137, 139);
