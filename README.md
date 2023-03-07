@@ -1,4 +1,5 @@
-# Araz_mobile_application
+# PMS_Mobile_Application
+SE Y4S1 group project
 
 A new Flutter project.
 
