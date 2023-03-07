@@ -32,7 +32,7 @@ class _NavigationsState extends State<Navigations> {
       "imageURL": "lib/assets/images/parentsMeeting.png",
       "heading": "parents Meetings schedule"
     },
-    {"imageURL": "lib/assets/images/menu.png", "heading": "More details"}
+    {"imageURL": "lib/assets/images/menu.png", "heading": "More details"},
   ];
 
   @override

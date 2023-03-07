@@ -23,8 +23,7 @@ class LoginUiApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.grey.shade100,
         primarySwatch: Colors.grey,
       ),
-      // home: SplashScreen(title: "title"),
-      // onGenerateRoute: (settings) => generateRoute(settings),
+
       initialRoute: '/',
       routes: {
         '/': (ctx) => SplashScreen(title: "title"),
