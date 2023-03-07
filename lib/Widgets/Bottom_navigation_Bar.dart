@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../Constants/Colors.dart';
-import '../Screens/Home.dart';
+import '../Screens/Dashboard.dart';
 import '../Screens/Profile_Page.dart';
 
 class Bottom_navigation_Bar extends StatefulWidget {
@@ -16,7 +16,7 @@ class _Bottom_navigation_BarState extends State<Bottom_navigation_Bar> {
   int _currentIndex = 0;
 
   final List<Widget> _children = [
-    Home(),
+    Dashboard(),
     ProfilePage(),
   ];
 
