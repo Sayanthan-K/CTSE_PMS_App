@@ -67,20 +67,22 @@ class _NavigationsState extends State<Navigations> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Container(
-                          width: MediaQuery.of(context).size.width * 0.25,
+                          width: MediaQuery.of(context).size.width * 0.15,
                           child: Image.asset(
                             '${dataview[index]['imageURL']}',
                           ),
                         ),
                         SizedBox(
-                          height: 10,
+                          height: 20,
                         ),
                         Container(
                           alignment: Alignment.center,
                           child: Text(
+                            textAlign: TextAlign.center,
                             '${dataview[index]['heading']}',
                             style: TextStyle(
-                              fontSize: 18,
+                              color: Colors.white70,
+                              fontSize: 20,
                               fontWeight: FontWeight.bold,
                               fontFamily: 'Open Sans',
                             ),
