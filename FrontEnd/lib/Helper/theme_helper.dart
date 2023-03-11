@@ -2,19 +2,34 @@ import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 class ThemeHelper {
-  InputDecoration textInputDecoration(
-      [String lableText = "", String hintText = ""]) {
+  InputDecoration textInputDecoration([String hintText = ""]) {
     return InputDecoration(
-      labelText: lableText,
+      // border: InputBorder.none,
+      hintText: hintText,
+      hintStyle: TextStyle(
+        fontSize: 17,
+        fontWeight: FontWeight.bold,
+        fontFamily: 'Open Sans',
+      ),
+      // counterText: lableText,
       fillColor: Colors.white,
+
+      labelStyle: TextStyle(
+        fontSize: 19,
+        fontWeight: FontWeight.bold,
+        fontFamily: 'Open Sans',
+      ),
       filled: true,
-      contentPadding: EdgeInsets.fromLTRB(20, 10, 20, 10),
+      contentPadding: EdgeInsets.fromLTRB(10, 10, 20, 10),
+      // focusedBorder: InputBorder.none,
       focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10.0),
-          borderSide: BorderSide(color: Colors.grey)),
+        borderRadius: BorderRadius.circular(10.0),
+        borderSide: BorderSide(color: Color.fromARGB(255, 0, 202, 248)),
+      ),
+      // enabledBorder: InputBorder.none,
       enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10.0),
-          borderSide: BorderSide(color: Colors.grey.shade400)),
+          borderSide: BorderSide(color: Colors.grey)),
       errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10.0),
           borderSide: BorderSide(color: Colors.red, width: 2.0)),
@@ -36,8 +51,8 @@ class ThemeHelper {
 
   BoxDecoration buttonBoxDecoration(BuildContext context,
       [String color1 = "", String color2 = ""]) {
-    Color c1 = Theme.of(context).primaryColor;
-    Color c2 = Theme.of(context).accentColor;
+    Color c1 = Theme.of(context).accentColor;
+    Color c2 = Theme.of(context).primaryColor;
     if (color1.isEmpty == false) {
       c1 = HexColor(color1);
     }

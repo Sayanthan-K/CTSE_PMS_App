@@ -1,3 +1,5 @@
+import 'package:araz_mobile_application/Screens/UserListView.dart';
+
 import '../Screens/LIstViewItems.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
@@ -14,23 +16,28 @@ class _NavigationsState extends State<Navigations> {
   var dataview = [
     {
       "imageURL": "lib/assets/images/UserManagement.png",
-      "heading": "User Management"
+      "heading": "User Management",
+      "path": "user/userListPage"
     },
     {
       "imageURL": "lib/assets/images/pre-school.png",
-      "heading": "Pre-schools Management"
+      "heading": "Pre-schools Management",
+      "path": ""
     },
     {
       "imageURL": "lib/assets/images/announcement.png",
-      "heading": "Announcements Management"
+      "heading": "Announcements Management",
+      "path": ""
     },
     {
       "imageURL": "lib/assets/images/examMarks.png",
-      "heading": "exam Marks Management"
+      "heading": "exam Marks Management",
+      "path": ""
     },
     {
       "imageURL": "lib/assets/images/parentsMeeting.png",
-      "heading": "parents Meetings schedule"
+      "heading": "parents Meetings schedule",
+      "path": ""
     },
     {"imageURL": "lib/assets/images/menu.png", "heading": "More details"},
   ];
@@ -52,12 +59,14 @@ class _NavigationsState extends State<Navigations> {
             itemBuilder: (BuildContext context, int index) {
               return Material(
                 borderRadius: BorderRadius.circular(24),
-                color: Colors.teal[400],
+                color: Color.fromRGBO(38, 166, 154, 1),
                 child: InkWell(
                   onTap: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => ListViewItems(),
-                    ));
+                    Navigator.pushNamed(
+                      context,
+                      '${dataview[index]['path']}',
+                      // arguments: {'exampleArgument': exampleArgument},
+                    );
                   },
                   child: Container(
                     padding: const EdgeInsets.all(8),
