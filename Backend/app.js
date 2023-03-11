@@ -5,6 +5,9 @@ const app = express();
 const db = require("./Config/db");
 const path = require("path");
 
+//Routers
+const AnnouncementRouter = require("./Routers/AnnouncementRoute");
+
 //middlewares
 app.use(BodyParser.urlencoded({ extended: false }));
 app.use(express.json());
@@ -20,6 +23,9 @@ app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
   next();
 });
+
+//routes
+app.use("/api/v1/announcement", AnnouncementRouter);
 
 //start server
 db.initDb((err, db) => {
