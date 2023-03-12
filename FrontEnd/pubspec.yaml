@@ -37,6 +37,10 @@ dependencies:
   cupertino_icons: ^1.0.2
   hexcolor: ^2.0.4
   dropdown_button2: ^2.0.0
+  firebase_core: ^2.7.1
+  firebase_auth: ^4.2.10
+  cloud_firestore: ^4.4.4
+  motion_toast: ^2.6.5
 
 dev_dependencies:
   flutter_test:
