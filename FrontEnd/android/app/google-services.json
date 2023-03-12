@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "651771240710",
+    "project_id": "ctse-pms-app",
+    "storage_bucket": "ctse-pms-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:651771240710:android:041a1d6ab3a029d61afe87",
+        "android_client_info": {
+          "package_name": "com.example.araz_mobile_application"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "651771240710-cjvt1mets6dlkhsdmhq3j0ulite73d7t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCyZ8npcV9W9U4n7n3fTR3ovGToCP6L3VI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "651771240710-cjvt1mets6dlkhsdmhq3j0ulite73d7t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

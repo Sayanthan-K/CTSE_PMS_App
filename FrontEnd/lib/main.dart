@@ -6,9 +6,19 @@ import 'package:araz_mobile_application/Screens/UserListView.dart';
 import 'package:araz_mobile_application/Screens/UserViewPage.dart';
 import 'package:araz_mobile_application/Screens/Usereditpage.dart';
 import 'package:araz_mobile_application/Screens/useraddpage.dart';
+import 'package:araz_mobile_application/firebase_options.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+// void main() {
+//   runApp(LoginUiApp());
+// }
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  await Firebase.initializeApp();
   runApp(LoginUiApp());
 }
 

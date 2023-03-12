@@ -1,12 +1,14 @@
 import 'package:araz_mobile_application/Helper/theme_helper.dart';
 import 'package:araz_mobile_application/Model/User.dart';
-import 'package:araz_mobile_application/Service/userservice.dart';
+import 'package:araz_mobile_application/Repository/UserRepository.dart';
 import 'package:araz_mobile_application/Widgets/CustomAppBar.dart';
 import 'package:araz_mobile_application/Widgets/HeaderWidget.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:motion_toast/motion_toast.dart';
+import 'package:motion_toast/resources/arrays.dart';
 
 class UseraddPage extends StatefulWidget {
   const UseraddPage({super.key});
@@ -16,6 +18,7 @@ class UseraddPage extends StatefulWidget {
 }
 
 class _UseraddPageState extends State<UseraddPage> {
+  // String? selectedValue;
   final List<String> items = [
     'Teacher',
     'Parents',
@@ -23,7 +26,6 @@ class _UseraddPageState extends State<UseraddPage> {
     'Item4',
     'Item5',
   ];
-  String? selectedValue;
 
   TextEditingController _first_Name = TextEditingController();
   TextEditingController _last_Name = TextEditingController();
@@ -33,8 +35,58 @@ class _UseraddPageState extends State<UseraddPage> {
   TextEditingController _age = TextEditingController();
   TextEditingController _address = TextEditingController();
   TextEditingController _about_me = TextEditingController();
+  late User newUser;
 
-  final _formKeyupdate = GlobalKey<FormState>();
+  var UserRepo = UserRepository();
+
+  void UserAddHandler() async {
+    // ignore: unnecessary_null_comparison
+
+    newUser = User(
+      id: DateTime.now().microsecondsSinceEpoch.toString(),
+      first_Name: _first_Name.text,
+      last_Name: _last_Name.text,
+      email: _email.text,
+      usertype: _Usertype.text,
+      mobile_number: _mobile_number.text,
+      address: _address.text,
+      age: _age.text,
+    );
+    if (_first_Name.text == null &&
+        _last_Name.text == null &&
+        _Usertype.text == null &&
+        _email.text == null &&
+        _mobile_number.text == null &&
+        _address.text == null &&
+        _age.text == null) {
+      MotionToast.error(
+        title: const Text(
+          'Error',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        description: const Text(
+          'Must filled all filed ',
+          style: TextStyle(
+            fontSize: 13,
+          ),
+        ),
+        position: MotionToastPosition.bottom,
+        barrierColor: Colors.black.withOpacity(0.3),
+        width: 300,
+        height: 80,
+        dismissable: false,
+      ).show(context);
+    }
+    UserRepo.addUser(newUser);
+    print("sayanthan");
+    // _titleController.clear();
+    // _descriptionController.clear();
+    setState(() {});
+  }
+
+  final _formKeyAdd = GlobalKey<FormState>();
   @override
   void dispose() {
     super.dispose();
@@ -62,27 +114,6 @@ class _UseraddPageState extends State<UseraddPage> {
     // _about_me.text = '${widget.userR.about_me}';
   }
 
-  void UpdateClick() {
-    User user = User(
-      id: "",
-      first_Name: _first_Name.text,
-      last_Name: _last_Name.text,
-      email: _email.text,
-      usertype: _Usertype.text,
-      mobile_number: _mobile_number.text,
-      address: _address.text,
-      age: _age.text,
-    );
-    print(user);
-    // final response = UserService.UpdateUser(
-    //         '/api/v1/users/63ece5caa1c6f21a57859e3e', user, context)
-    //     .then((response) {
-    //   print(response);
-    // }).catchError((error) {
-    //   print(error);
-    // });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -101,7 +132,7 @@ class _UseraddPageState extends State<UseraddPage> {
               child: Column(
                 children: [
                   Form(
-                    key: _formKeyupdate,
+                    key: _formKeyAdd,
                     child: Column(
                       children: [
                         GestureDetector(
@@ -267,96 +298,146 @@ class _UseraddPageState extends State<UseraddPage> {
                                 fontWeight: FontWeight.bold),
                           ),
                         ),
-                        Container(
-                          width: MediaQuery.of(context).size.width,
-                          child: DropdownButtonHideUnderline(
-                            child: DropdownButton2(
-                              isExpanded: true,
-                              hint: Row(
-                                children: const [
-                                  Expanded(
-                                    child: Text(
-                                      'Select Item',
-                                      style: TextStyle(
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.black,
-                                      ),
-                                      overflow: TextOverflow.ellipsis,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              items: items
-                                  .map((item) => DropdownMenuItem<String>(
-                                        value: item,
-                                        child: Text(
-                                          item,
-                                          style: const TextStyle(
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.black,
-                                          ),
-                                          overflow: TextOverflow.ellipsis,
-                                        ),
-                                      ))
-                                  .toList(),
-                              value: selectedValue,
-                              onChanged: (value) {
-                                setState(() {
-                                  selectedValue = value as String;
-                                });
+                        // Container(
+                        //   width: MediaQuery.of(context).size.width,
+                        //   child: DropdownButtonHideUnderline(
+                        //     child: DropdownButton2(
+                        //       isExpanded: true,
+                        //       hint: Row(
+                        //         children: const [
+                        //           Expanded(
+                        //             child: Text(
+                        //               'Select Item',
+                        //               style: TextStyle(
+                        //                 fontSize: 14,
+                        //                 fontWeight: FontWeight.bold,
+                        //                 color: Colors.black,
+                        //               ),
+                        //               overflow: TextOverflow.ellipsis,
+                        //             ),
+                        //           ),
+                        //         ],
+                        //       ),
+                        //       items: items
+                        //           .map((item) => DropdownMenuItem<String>(
+                        //                 value: item,
+                        //                 child: Text(
+                        //                   item,
+                        //                   style: const TextStyle(
+                        //                     fontSize: 14,
+                        //                     fontWeight: FontWeight.bold,
+                        //                     color: Colors.black,
+                        //                   ),
+                        //                   overflow: TextOverflow.ellipsis,
+                        //                 ),
+                        //               ))
+                        //           .toList(),
+                        //       value: selectedValue,
+                        //       onChanged: (value) {
+                        //         setState(() {
+                        //           selectedValue = value as String;
+                        //         });
+                        //       },
+                        //       buttonStyleData: ButtonStyleData(
+                        //         height: 50,
+                        //         width: 160,
+                        //         padding:
+                        //             const EdgeInsets.only(left: 14, right: 14),
+                        //         decoration: BoxDecoration(
+                        //           borderRadius: BorderRadius.circular(14),
+                        //           border: Border.all(
+                        //             color: Colors.black26,
+                        //           ),
+                        //           color: Colors.white,
+                        //         ),
+                        //         elevation: 2,
+                        //       ),
+                        //       iconStyleData: const IconStyleData(
+                        //         icon: Icon(
+                        //           size: 40,
+                        //           Icons.arrow_drop_down,
+                        //         ),
+                        //         iconSize: 14,
+                        //         iconEnabledColor: Color.fromARGB(255, 0, 0, 0),
+                        //         iconDisabledColor: Colors.grey,
+                        //       ),
+                        // dropdownStyleData: DropdownStyleData(
+                        //   maxHeight:
+                        //       MediaQuery.of(context).size.height * 0.25,
+                        //   width: MediaQuery.of(context).size.width * 0.94,
+                        //   padding: null,
+                        //   decoration: BoxDecoration(
+                        //     borderRadius: BorderRadius.circular(14),
+                        //     // color: Colors.redAccent,
+                        //   ),
+                        //         elevation: 8,
+                        //         offset: const Offset(-20, 0),
+                        //         scrollbarTheme: ScrollbarThemeData(
+                        //           radius: const Radius.circular(40),
+                        //           thickness:
+                        //               MaterialStateProperty.all<double>(6),
+                        //           thumbVisibility:
+                        //               MaterialStateProperty.all<bool>(true),
+                        //         ),
+                        //       ),
+                        //       menuItemStyleData: const MenuItemStyleData(
+                        //         height: 40,
+                        //         padding: EdgeInsets.only(left: 14, right: 14),
+                        //       ),
+                        //     ),
+                        //   ),
+                        // ),
+
+                        SizedBox(height: 10.0),
+                        TextFormField(
+                          validator: (val) {
+                            if ((val!.isEmpty)) {
+                              return "please Select UserType";
+                            }
+                            return null;
+                          },
+                          controller: _Usertype,
+                          decoration: InputDecoration(
+                            hintText: "select usertype",
+                            hintStyle: TextStyle(
+                              fontSize: 17,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'Open Sans',
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+                                borderSide: BorderSide(color: Colors.grey)),
+                            errorBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+                                borderSide:
+                                    BorderSide(color: Colors.red, width: 2.0)),
+                            focusedErrorBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+                                borderSide:
+                                    BorderSide(color: Colors.red, width: 2.0)),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10.0),
+                              borderSide: BorderSide(
+                                  color: Color.fromARGB(255, 0, 202, 248)),
+                            ),
+                            fillColor: Colors.white,
+                            filled: true,
+                            contentPadding: EdgeInsets.fromLTRB(10, 10, 20, 10),
+                            suffixIcon: PopupMenuButton<String>(
+                              icon: const Icon(Icons.arrow_drop_down),
+                              onSelected: (String value) {
+                                _Usertype.text = value;
                               },
-                              buttonStyleData: ButtonStyleData(
-                                height: 50,
-                                width: 160,
-                                padding:
-                                    const EdgeInsets.only(left: 14, right: 14),
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(14),
-                                  border: Border.all(
-                                    color: Colors.black26,
-                                  ),
-                                  color: Colors.white,
-                                ),
-                                elevation: 2,
-                              ),
-                              iconStyleData: const IconStyleData(
-                                icon: Icon(
-                                  size: 40,
-                                  Icons.arrow_drop_down,
-                                ),
-                                iconSize: 14,
-                                iconEnabledColor: Color.fromARGB(255, 0, 0, 0),
-                                iconDisabledColor: Colors.grey,
-                              ),
-                              dropdownStyleData: DropdownStyleData(
-                                maxHeight:
-                                    MediaQuery.of(context).size.height * 0.25,
-                                width: MediaQuery.of(context).size.width * 0.94,
-                                padding: null,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(14),
-                                  // color: Colors.redAccent,
-                                ),
-                                elevation: 8,
-                                offset: const Offset(-20, 0),
-                                scrollbarTheme: ScrollbarThemeData(
-                                  radius: const Radius.circular(40),
-                                  thickness:
-                                      MaterialStateProperty.all<double>(6),
-                                  thumbVisibility:
-                                      MaterialStateProperty.all<bool>(true),
-                                ),
-                              ),
-                              menuItemStyleData: const MenuItemStyleData(
-                                height: 40,
-                                padding: EdgeInsets.only(left: 14, right: 14),
-                              ),
+                              itemBuilder: (BuildContext context) {
+                                return items
+                                    .map<PopupMenuItem<String>>((String value) {
+                                  return new PopupMenuItem(
+                                      child: new Text(value), value: value);
+                                }).toList();
+                              },
                             ),
                           ),
                         ),
-
                         SizedBox(height: 10.0),
                         Container(
                           alignment: Alignment.topLeft,
@@ -408,12 +489,13 @@ class _UseraddPageState extends State<UseraddPage> {
                         ),
                         Container(
                           child: TextFormField(
+                            keyboardType: TextInputType.phone,
                             controller: _age,
                             decoration:
                                 ThemeHelper().textInputDecoration('Age'),
                             validator: (val) {
                               if ((val!.isEmpty)) {
-                                return "Enter a valid age";
+                                return "please Enter  age";
                               }
                               return null;
                             },
@@ -457,7 +539,7 @@ class _UseraddPageState extends State<UseraddPage> {
                               padding:
                                   const EdgeInsets.fromLTRB(40, 10, 40, 10),
                               child: Text(
-                                "Update".toUpperCase(),
+                                "addUser".toUpperCase(),
                                 style: TextStyle(
                                   fontSize: 20,
                                   fontWeight: FontWeight.bold,
@@ -466,10 +548,33 @@ class _UseraddPageState extends State<UseraddPage> {
                               ),
                             ),
                             onPressed: () {
-                              // if (_formKeyupdate.currentState!.validate()) {
-                              //   UpdateClick();
-                              //   Navigator.of(context).pop(context);
-                              // }
+                              if (_formKeyAdd.currentState!.validate()) {
+                                UserAddHandler();
+                                Navigator.pushNamed(
+                                  context,
+                                  'user/userListPage',
+                                  // arguments: {'exampleArgument': exampleArgument},
+                                );
+                                MotionToast.success(
+                                  title: const Text(
+                                    'Success',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  description: const Text(
+                                    'sucess fully added user details  ',
+                                    style: TextStyle(
+                                      fontSize: 13,
+                                    ),
+                                  ),
+                                  position: MotionToastPosition.bottom,
+                                  barrierColor: Colors.black.withOpacity(0.3),
+                                  width: 300,
+                                  height: 80,
+                                  dismissable: false,
+                                ).show(context);
+                              }
                             },
                           ),
                         ),

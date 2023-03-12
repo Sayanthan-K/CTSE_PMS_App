@@ -1,3 +1,4 @@
+import 'package:araz_mobile_application/Model/User.dart';
 import 'package:araz_mobile_application/Screens/usereditpage.dart';
 import 'package:araz_mobile_application/Widgets/CustomAppBar.dart';
 import 'package:araz_mobile_application/Widgets/HeaderWidget.dart';
@@ -14,18 +15,10 @@ class UserViewPage extends StatefulWidget {
 
 class _UserViewPageState extends State<UserViewPage> {
   // Initial Selected Value
-  String dropdownvalue = 'Item 1';
 
-  // List of items in our dropdown menu
-  var items = [
-    'Item 1',
-    'Item 2',
-    'Item 3',
-    'Item 4',
-    'Item 5',
-  ];
   @override
   Widget build(BuildContext context) {
+    final args = (ModalRoute.of(context)!.settings.arguments ?? '') as User;
     return Scaffold(
       appBar: CustomAppBar(context, "User details"),
       body: SingleChildScrollView(
@@ -74,12 +67,12 @@ class _UserViewPageState extends State<UserViewPage> {
                     TextSpan(
                       children: [
                         TextSpan(
-                          text: 'FirstName' + " ",
+                          text: args.first_Name,
                           style: TextStyle(
                               fontSize: 22, fontWeight: FontWeight.bold),
                         ),
                         TextSpan(
-                          text: "lastname",
+                          text: args.last_Name,
                           style: TextStyle(
                               fontSize: 22, fontWeight: FontWeight.bold),
                         ),
@@ -90,7 +83,7 @@ class _UserViewPageState extends State<UserViewPage> {
                     height: 20,
                   ),
                   Text(
-                    "job role",
+                    args.usertype,
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   ),
                   SizedBox(
@@ -129,22 +122,22 @@ class _UserViewPageState extends State<UserViewPage> {
                                         ListTile(
                                           leading: Icon(Icons.email),
                                           title: Text("Email"),
-                                          subtitle: Text('Email'),
+                                          subtitle: Text(args.email),
                                         ),
                                         ListTile(
                                           leading: Icon(Icons.phone),
                                           title: Text("Phone"),
-                                          subtitle: Text('phone'),
+                                          subtitle: Text(args.mobile_number),
                                         ),
                                         ListTile(
                                           leading: Icon(Icons.location_on),
                                           title: Text("Address"),
-                                          subtitle: Text('about'),
+                                          subtitle: Text(args.address),
                                         ),
                                         ListTile(
                                           leading: Icon(Icons.list_alt),
                                           title: Text("Age"),
-                                          subtitle: Text('Age'),
+                                          subtitle: Text(args.age),
                                         ),
                                       ],
                                     ),
@@ -161,7 +154,7 @@ class _UserViewPageState extends State<UserViewPage> {
                                       Navigator.pushNamed(
                                         context,
                                         'user/editpage',
-                                        // arguments: {'exampleArgument': exampleArgument},
+                                        arguments: args,
                                       );
 
                                       // Navigator.of(context)
