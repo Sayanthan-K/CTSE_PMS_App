@@ -1,6 +1,10 @@
 // import 'dart:js';
 
 import 'package:araz_mobile_application/Constants/Colors.dart';
+import 'package:araz_mobile_application/Screens/SchoolAddPage.dart';
+import 'package:araz_mobile_application/Screens/SchoolEditPage.dart';
+import 'package:araz_mobile_application/Screens/SchoolListView.dart';
+import 'package:araz_mobile_application/Screens/SchoolViewPage.dart';
 import 'package:araz_mobile_application/Screens/SplashScreen.dart';
 import 'package:araz_mobile_application/Screens/UserListView.dart';
 import 'package:araz_mobile_application/Screens/UserViewPage.dart';
@@ -61,6 +65,18 @@ class LoginUiApp extends StatelessWidget {
             break;
           case 'user/editpage':
             builder = (BuildContext _) => new Usereditpage();
+            break;
+          case 'school/schoolListPage':
+            builder = (BuildContext _) => new SchoolListView();
+            break;
+          case 'school/Addpage':
+            builder = (BuildContext _) => new SchoolAddPage();
+            break;
+          case 'school/schoolViewPage':
+            builder = (BuildContext _) => new SchoolViewPage();
+            break;
+          case 'school/editpage':
+            builder = (BuildContext _) => new SchoolEditPage();
             break;
 
           default:

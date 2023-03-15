@@ -1,4 +1,5 @@
 import 'package:araz_mobile_application/Screens/UserListView.dart';
+import 'package:araz_mobile_application/Screens/SchoolListView.dart';
 
 import '../Screens/LIstViewItems.dart';
 import 'package:flutter/material.dart';
@@ -22,7 +23,7 @@ class _NavigationsState extends State<Navigations> {
     {
       "imageURL": "lib/assets/images/pre-school.png",
       "heading": "Pre-schools Management",
-      "path": ""
+      "path": "school/schoolListPage"
     },
     {
       "imageURL": "lib/assets/images/announcement.png",

@@ -3,7 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../Model/School.dart';
 
-class UserRepository {
+class SchoolRepository {
   final CollectionReference _collection =
       FirebaseFirestore.instance.collection('Schools');
 
