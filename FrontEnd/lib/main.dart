@@ -1,6 +1,10 @@
 // import 'dart:js';
 
 import 'package:araz_mobile_application/Constants/Colors.dart';
+import 'package:araz_mobile_application/Screens/MarksAddPage.dart';
+import 'package:araz_mobile_application/Screens/MarksEditPage.dart';
+import 'package:araz_mobile_application/Screens/MarksListView.dart';
+import 'package:araz_mobile_application/Screens/MarksViewPage.dart';
 import 'package:araz_mobile_application/Screens/SplashScreen.dart';
 import 'package:araz_mobile_application/Screens/UserListView.dart';
 import 'package:araz_mobile_application/Screens/UserViewPage.dart';
@@ -62,7 +66,18 @@ class LoginUiApp extends StatelessWidget {
           case 'user/editpage':
             builder = (BuildContext _) => new Usereditpage();
             break;
-
+          case 'mark/markListPage':
+            builder = (BuildContext _) => new MarksListView();
+            break;
+          case 'mark/markViewPage':
+            builder = (BuildContext _) => new MarksViewPage();
+            break;
+          case 'mark/Addpage':
+            builder = (BuildContext _) => new MarksaddPage();
+            break;
+          case 'mark/editpage':
+            builder = (BuildContext _) => new Markseditpage();
+            break;
           default:
             throw new Exception('Invalid route: ${settings.name}');
         }
