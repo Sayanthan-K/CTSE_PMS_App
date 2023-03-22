@@ -167,13 +167,13 @@ class _UserListViewState extends State<UserListView> {
                                   );
                                 },
                                 child: Card(
-                                  color: Color.fromARGB(255, 76, 164, 174),
+                                  color: Color.fromARGB(255, 28, 174, 169),
                                   child: ListTile(
                                     textColor: Colors.white,
                                     leading: Image.asset(
                                       "lib/assets/images/User.png",
-                                      width: 40.0,
-                                      height: 40.0,
+                                      width: 45.0,
+                                      height: 45.0,
                                     ),
                                     title: Flexible(
                                       fit: FlexFit.loose,
@@ -212,7 +212,7 @@ class _UserListViewState extends State<UserListView> {
                                       icon: Icon(Icons.delete),
                                       // color: Colors.black,
                                       iconSize: 33,
-                                      color: Colors.red[500],
+                                      color: Colors.red[600],
                                       onPressed: () {
                                         setState(() {
                                           showDialog(

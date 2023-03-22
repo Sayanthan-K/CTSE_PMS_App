@@ -54,6 +54,15 @@ class _AboutPageState extends State<AboutPage> {
                   SizedBox(
                     height: 15,
                   ),
+                  Text(
+                    textAlign: TextAlign.center,
+                    "About for Pre-School Admin Panel",
+                    style: TextStyle(
+                      fontSize: 17,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
+                  ),
                   Container(
                     width: MediaQuery.of(context).size.width,
                     height: MediaQuery.of(context).size.height * 0.60,
