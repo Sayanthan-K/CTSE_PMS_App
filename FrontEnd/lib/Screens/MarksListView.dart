@@ -99,8 +99,8 @@ class _MarksListViewState extends State<MarksListView> {
                                 textColor: Colors.white,
                                 leading: Image.asset(
                                   "lib/assets/images/Marks.png",
-                                  width: 40.0,
-                                  height: 40.0,
+                                  width: 45.0,
+                                  height: 45.0,
                                 ),
                                 title: Flexible(
                                   fit: FlexFit.loose,
