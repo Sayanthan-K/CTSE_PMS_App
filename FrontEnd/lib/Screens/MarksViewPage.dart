@@ -53,12 +53,6 @@ class _MarksViewPageState extends State<MarksViewPage> {
                       width: 80,
                       height: 80,
                     ),
-
-                    // Icon(
-                    //   Icons.person,
-                    //   size: 80,
-                    //   color: Colors.grey.shade300,
-                    // ),
                   ),
                   SizedBox(
                     height: 20,
@@ -141,32 +135,6 @@ class _MarksViewPageState extends State<MarksViewPage> {
                                         'mark/editpage',
                                         arguments: args,
                                       );
-
-                                      // Navigator.of(context)
-                                      //     .push(MaterialPageRoute(
-                                      //   builder: (context) => Markseditpage(),
-                                      // ));
-
-                                      // Navigator.of(context).push(
-                                      //     MaterialPageRoute(
-                                      //         builder: (context) => EditProfile(
-                                      //             userR: Marks(
-                                      //                 token: "",
-                                      //                 id: "",
-                                      //                 first_Name: userw!
-                                      //                     .first_Name
-                                      //                     .toString(),
-                                      //                 last_Name: userw!
-                                      //                     .last_Name
-                                      //                     .toString(),
-                                      //                 email: userw!.email,
-                                      //                 password: userw!.password,
-                                      //                 mobile_number:
-                                      //                     userw!.mobile_number,
-                                      //                 job_role: userw!.job_role,
-                                      //                 address: userw!.address,
-                                      //                 about_me:
-                                      //                     userw!.about_me))));
                                     },
                                     child: Icon(
                                       Icons.edit,
@@ -184,13 +152,6 @@ class _MarksViewPageState extends State<MarksViewPage> {
                 ],
               ),
             )
-            //  Container(
-            //     margin: EdgeInsets.all(100),
-            //     child: Center(
-            //         child: CircularProgressIndicator(
-            //       color: Colors.green,
-            //     )),
-            //   ),
           ],
         ),
       ),

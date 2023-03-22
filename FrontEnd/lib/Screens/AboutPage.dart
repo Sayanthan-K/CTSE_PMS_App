@@ -55,8 +55,6 @@ class _AboutPageState extends State<AboutPage> {
                     height: 15,
                   ),
                   Container(
-                    // padding: EdgeInsets.all(),
-                    // margin: EdgeInsets.all(value),
                     width: MediaQuery.of(context).size.width,
                     height: MediaQuery.of(context).size.height * 0.60,
                     child: Card(
@@ -64,7 +62,6 @@ class _AboutPageState extends State<AboutPage> {
                       child: Container(
                         padding: EdgeInsets.all(10),
                         child: Column(
-                          // mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             SizedBox(
