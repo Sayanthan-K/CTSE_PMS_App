@@ -18,14 +18,6 @@ class SchoolAddPage extends StatefulWidget {
 }
 
 class _SchoolAddPageState extends State<SchoolAddPage> {
-  // String? selectedValue;
-  final List<String> items = [
-    'Teacher',
-    'Parents',
-    'Zone',
-    'Item4',
-    'Item5',
-  ];
   TextEditingController _email = TextEditingController();
   TextEditingController _name = TextEditingController();
   TextEditingController _mobile_number = TextEditingController();
@@ -68,8 +60,6 @@ class _SchoolAddPageState extends State<SchoolAddPage> {
     }
     SchoolRepo.addSchool(newSchool);
     print("Ananthan");
-    // _titleController.clear();
-    // _descriptionController.clear();
     setState(() {});
   }
 
@@ -91,7 +81,7 @@ class _SchoolAddPageState extends State<SchoolAddPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(context, "Addschoolpage"),
+      appBar: CustomAppBar(context, "Add school"),
       body: SingleChildScrollView(
         child: Stack(
           children: [
@@ -274,6 +264,7 @@ class _SchoolAddPageState extends State<SchoolAddPage> {
                             onPressed: () {
                               if (_formKeyAdd.currentState!.validate()) {
                                 SchoolAddHandler();
+                                // navigate to school listpage
                                 Navigator.pushNamed(
                                   context,
                                   'school/schoolListPage',

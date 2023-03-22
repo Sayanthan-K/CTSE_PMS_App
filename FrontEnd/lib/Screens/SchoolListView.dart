@@ -44,7 +44,6 @@ class _SchoolListViewState extends State<SchoolListView> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     loaddata();
   }
@@ -53,7 +52,7 @@ class _SchoolListViewState extends State<SchoolListView> {
   Widget build(BuildContext context) {
     final customheight = MediaQuery.of(context).size.height;
     return Scaffold(
-      appBar: CustomAppBar(context, "ALL School views"),
+      appBar: CustomAppBar(context, "ALL School"),
       body: Stack(children: [
         Container(
           padding: EdgeInsets.all(10),
@@ -64,6 +63,7 @@ class _SchoolListViewState extends State<SchoolListView> {
               builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
                 if (snapshot.hasData) {
                   if (snapshot.data.isEmpty) {
+                    // check school data is empty or not
                     return Center(
                       child: Text(
                         "No data found",
@@ -121,12 +121,12 @@ class _SchoolListViewState extends State<SchoolListView> {
                                 ),
                                 trailing: IconButton(
                                   icon: Icon(Icons.delete),
-                                  // color: Colors.black,
                                   iconSize: 33,
                                   color: Colors.red[500],
                                   onPressed: () {
                                     setState(() {
                                       showDialog(
+                                          // alert dialog box when delete school
                                           context: context,
                                           builder: (context) =>
                                               custom_AlertDialogbox(
@@ -159,19 +159,17 @@ class _SchoolListViewState extends State<SchoolListView> {
               }),
         ),
         Container(
+          //add school button implementation
           margin: EdgeInsets.all(20),
           padding: EdgeInsets.all(10),
           alignment: Alignment.bottomCenter,
           child: FloatingActionButton(
             onPressed: () {
-              // Navigator.of(context).push(MaterialPageRoute(
-              //   builder: (context) => SchooladdPage(),
-              // ));
+              // navigate to add school page
 
               Navigator.pushNamed(
                 context,
                 'school/Addpage',
-                // arguments: {'exampleArgument': exampleArgument},
               );
             },
             tooltip: "add list item",
