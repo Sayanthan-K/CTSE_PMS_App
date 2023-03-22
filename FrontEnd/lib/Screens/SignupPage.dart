@@ -100,14 +100,6 @@ class _SignUpPageState extends State<SignUpPage> {
                                   height: 80,
                                 ),
                               ),
-                              // Container(
-                              //   padding: EdgeInsets.fromLTRB(80, 80, 0, 0),
-                              //   child: Icon(
-                              //     Icons.add_circle,
-                              //     color: Colors.grey.shade700,
-                              //     size: 25.0,
-                              //   ),
-                              // ),
                             ],
                           ),
                         ),
@@ -222,30 +214,6 @@ class _SignUpPageState extends State<SignUpPage> {
                             onPressed: () {
                               if (_formKey.currentState!.validate()) {
                                 signUpuserClick();
-                                // MotionToast.success(
-                                //   title: const Text(
-                                //     'Success',
-                                //     style:
-                                //         TextStyle(fontWeight: FontWeight.bold),
-                                //   ),
-                                //   description: const Text(
-                                //     'Success fully Registered please SignIN the same credentials',
-                                //     style: TextStyle(fontSize: 12),
-                                //   ),
-                                //   layoutOrientation: ToastOrientation.rtl,
-                                //   animationType: AnimationType.fromRight,
-                                //   dismissable: true,
-                                // ).show(context);
-                                // Navigator.pushAndRemoveUntil(
-                                //     context, Bnav.routeName, (router) => false);
-
-                                // MaterialPageRoute(
-                                //     builder: (context) => Bnav()));
-
-                                // Navigator.of(context).pushAndRemoveUntil(
-                                //     MaterialPageRoute(
-                                //         builder: (context) => Bnav()),
-                                //     (Route<dynamic> route) => false);
                               }
                             },
                           ),

@@ -26,12 +26,9 @@ class _Privacy_policyState extends State<Privacy_policy> {
               alignment: Alignment.center,
               margin: EdgeInsets.all(10),
               padding: EdgeInsets.all(10),
-              // margin: EdgeInsets.fromLTRB(25, 10, 25, 10),
-              // padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
               child: Column(
                 children: [
                   Container(
-                    // padding: EdgeInsets.all(10),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(50),
                       border: Border.all(

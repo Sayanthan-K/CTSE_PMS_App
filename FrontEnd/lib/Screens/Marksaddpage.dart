@@ -148,28 +148,13 @@ class _MarksaddPageState extends State<MarksaddPage> {
                                   width: 80,
                                   height: 80,
                                 ),
-
-                                // Icon(
-                                //   Icons.person,
-                                //   color: Colors.grey.shade300,
-                                //   size: 80.0,
-                                // ),
                               ),
-                              // Container(
-                              //   padding: EdgeInsets.fromLTRB(80, 80, 0, 0),
-                              //   child: Icon(
-                              //     Icons.add_circle,
-                              //     color: Colors.grey.shade700,
-                              //     size: 25.0,
-                              //   ),
-                              // ),
                             ],
                           ),
                         ),
                         SizedBox(
                           height: 25,
                         ),
-
                         Container(
                           alignment: Alignment.topLeft,
                           child: Text(
@@ -224,116 +209,6 @@ class _MarksaddPageState extends State<MarksaddPage> {
                           ),
                           decoration: ThemeHelper().inputBoxDecorationShaddow(),
                         ),
-
-                        // SizedBox(height: 10.0),
-                        // Container(
-                        //   child: TextFormField(
-                        //     controller: _password,
-                        //     obscureText: true,
-                        //     decoration:
-                        //         ThemeHelper().textInputDecoration("Password*"),
-                        //     validator: (val) {
-                        //       if (val!.isEmpty) {
-                        //         return "Please enter your password";
-                        //       } else if (!RegExp(
-                        //               r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$')
-                        //           .hasMatch(val)) {
-                        //         return "Please enter vaild your password";
-                        //       }
-                        //       return null;
-                        //     },
-                        //   ),
-                        //   decoration: ThemeHelper().inputBoxDecorationShaddow(),
-                        // ),
-                        // Container(
-                        //   width: MediaQuery.of(context).size.width,
-                        //   child: DropdownButtonHideUnderline(
-                        //     child: DropdownButton2(
-                        //       isExpanded: true,
-                        //       hint: Row(
-                        //         children: const [
-                        //           Expanded(
-                        //             child: Text(
-                        //               'Select Item',
-                        //               style: TextStyle(
-                        //                 fontSize: 14,
-                        //                 fontWeight: FontWeight.bold,
-                        //                 color: Colors.black,
-                        //               ),
-                        //               overflow: TextOverflow.ellipsis,
-                        //             ),
-                        //           ),
-                        //         ],
-                        //       ),
-                        //       items: items
-                        //           .map((item) => DropdownMenuItem<String>(
-                        //                 value: item,
-                        //                 child: Text(
-                        //                   item,
-                        //                   style: const TextStyle(
-                        //                     fontSize: 14,
-                        //                     fontWeight: FontWeight.bold,
-                        //                     color: Colors.black,
-                        //                   ),
-                        //                   overflow: TextOverflow.ellipsis,
-                        //                 ),
-                        //               ))
-                        //           .toList(),
-                        //       value: selectedValue,
-                        //       onChanged: (value) {
-                        //         setState(() {
-                        //           selectedValue = value as String;
-                        //         });
-                        //       },
-                        //       buttonStyleData: ButtonStyleData(
-                        //         height: 50,
-                        //         width: 160,
-                        //         padding:
-                        //             const EdgeInsets.only(left: 14, right: 14),
-                        //         decoration: BoxDecoration(
-                        //           borderRadius: BorderRadius.circular(14),
-                        //           border: Border.all(
-                        //             color: Colors.black26,
-                        //           ),
-                        //           color: Colors.white,
-                        //         ),
-                        //         elevation: 2,
-                        //       ),
-                        //       iconStyleData: const IconStyleData(
-                        //         icon: Icon(
-                        //           size: 40,
-                        //           Icons.arrow_drop_down,
-                        //         ),
-                        //         iconSize: 14,
-                        //         iconEnabledColor: Color.fromARGB(255, 0, 0, 0),
-                        //         iconDisabledColor: Colors.grey,
-                        //       ),
-                        // dropdownStyleData: DropdownStyleData(
-                        //   maxHeight:
-                        //       MediaQuery.of(context).size.height * 0.25,
-                        //   width: MediaQuery.of(context).size.width * 0.94,
-                        //   padding: null,
-                        //   decoration: BoxDecoration(
-                        //     borderRadius: BorderRadius.circular(14),
-                        //     // color: Colors.redAccent,
-                        //   ),
-                        //         elevation: 8,
-                        //         offset: const Offset(-20, 0),
-                        //         scrollbarTheme: ScrollbarThemeData(
-                        //           radius: const Radius.circular(40),
-                        //           thickness:
-                        //               MaterialStateProperty.all<double>(6),
-                        //           thumbVisibility:
-                        //               MaterialStateProperty.all<bool>(true),
-                        //         ),
-                        //       ),
-                        //       menuItemStyleData: const MenuItemStyleData(
-                        //         height: 40,
-                        //         padding: EdgeInsets.only(left: 14, right: 14),
-                        //       ),
-                        //     ),
-                        //   ),
-                        // ),
                         SizedBox(height: 10.0),
                         Container(
                           alignment: Alignment.topLeft,
@@ -359,14 +234,7 @@ class _MarksaddPageState extends State<MarksaddPage> {
                                   return 'Please enter valid marks';
                                 }
                                 return null;
-                              }
-                              //   if ((val!.length == 0) &&
-                              //       !RegExp(r"^(\d+)*$").hasMatch(val)) {
-                              //     return "Enter a valid phone number";
-                              //   }
-                              //   return null;
-                              // },
-                              ),
+                              }),
                           decoration: ThemeHelper().inputBoxDecorationShaddow(),
                         ),
                         SizedBox(height: 10.0),
@@ -394,14 +262,7 @@ class _MarksaddPageState extends State<MarksaddPage> {
                                   return 'Please enter valid marks';
                                 }
                                 return null;
-                              }
-                              //   if ((val!.length == 0) &&
-                              //       !RegExp(r"^(\d+)*$").hasMatch(val)) {
-                              //     return "Enter a valid phone number";
-                              //   }
-                              //   return null;
-                              // },
-                              ),
+                              }),
                           decoration: ThemeHelper().inputBoxDecorationShaddow(),
                         ),
                         SizedBox(height: 10.0),
@@ -429,17 +290,9 @@ class _MarksaddPageState extends State<MarksaddPage> {
                                   return 'Please enter valid marks';
                                 }
                                 return null;
-                              }
-                              //   if ((val!.length == 0) &&
-                              //       !RegExp(r"^(\d+)*$").hasMatch(val)) {
-                              //     return "Enter a valid phone number";
-                              //   }
-                              //   return null;
-                              // },
-                              ),
+                              }),
                           decoration: ThemeHelper().inputBoxDecorationShaddow(),
                         ),
-
                         SizedBox(height: 17.0),
                         Container(
                           decoration:
@@ -464,7 +317,6 @@ class _MarksaddPageState extends State<MarksaddPage> {
                                 Navigator.pushNamed(
                                   context,
                                   'mark/markListPage',
-                                  // arguments: {'exampleArgument': exampleArgument},
                                 );
                                 MotionToast.success(
                                   title: const Text(
