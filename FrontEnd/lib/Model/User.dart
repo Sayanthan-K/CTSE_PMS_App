@@ -104,4 +104,6 @@ class User {
         age.hashCode ^
         address.hashCode;
   }
+
+  get(String s) {}
 }

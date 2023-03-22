@@ -35,11 +35,11 @@ class _NavigationsState extends State<Navigations> {
       "heading": "Exam Marks Management",
       "path": "mark/markListPage"
     },
-    {
-      "imageURL": "lib/assets/images/parentsMeeting.png",
-      "heading": "parents Meetings schedule",
-      "path": ""
-    },
+    // {
+    //   "imageURL": "lib/assets/images/parentsMeeting.png",
+    //   "heading": "parents Meetings schedule",
+    //   "path": ""
+    // },
     {"imageURL": "lib/assets/images/menu.png", "heading": "More details"},
   ];
 

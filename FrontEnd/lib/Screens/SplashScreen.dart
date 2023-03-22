@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:araz_mobile_application/Constants/Colors.dart';
 import 'package:araz_mobile_application/Screens/Dashboard.dart';
+import 'package:araz_mobile_application/Screens/SignInpage.dart';
 import 'package:araz_mobile_application/Widgets/Bottom_navigation_Bar.dart';
 import 'package:flutter/material.dart';
 
@@ -21,7 +22,7 @@ class _SplashScreenState extends State<SplashScreen> {
     new Timer(const Duration(milliseconds: 2000), () {
       setState(() {
         Navigator.of(context).pushAndRemoveUntil(
-            MaterialPageRoute(builder: (context) => Bottom_navigation_Bar()),
+            MaterialPageRoute(builder: (context) => SignInPage()),
             (route) => false);
       });
     });

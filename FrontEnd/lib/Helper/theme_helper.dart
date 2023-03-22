@@ -108,24 +108,14 @@ class ThemeHelper {
             leftmessage,
             style: TextStyle(color: Colors.black),
           ),
-          // style: ButtonStyle(
-          //     backgroundColor: MaterialStateProperty.all(Colors.black38)),
           onPressed: leftOntap,
-          // onPressed: () {
-          //   Navigator.of(context).pop();
-          // },
         ),
         TextButton(
           child: Text(
             rightmessage,
             style: TextStyle(color: Color.fromARGB(255, 226, 0, 0)),
           ),
-          // style: ButtonStyle(
-          //     backgroundColor: MaterialStateProperty.all(Colors.black38)),
           onPressed: rightOntap,
-          // onPressed: () {
-          //   Navigator.of(context).pop();
-          // },
         ),
       ],
     );

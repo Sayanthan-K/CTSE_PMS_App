@@ -47,13 +47,19 @@ Drawer Topnavigationbar(context, _drawerIconSize, _drawerFontSize) {
               // color: Colors.black,
             ),
             title: const Text(
-              'Rules and Regulations ',
+              'Privacy policy',
               style: TextStyle(
                 fontSize: 17,
                 // color: Theme.of(context).accentColor,
               ),
             ),
-            onTap: () {},
+            onTap: () {
+              Navigator.pushNamed(
+                context,
+                'Admin/Privacy policy',
+              );
+              // Admin/RuleRegulation
+            },
           ),
           Divider(
             color: Theme.of(context).primaryColor,
@@ -65,49 +71,21 @@ Drawer Topnavigationbar(context, _drawerIconSize, _drawerFontSize) {
               size: _drawerIconSize,
             ),
             title: Text(
-              'Guidelines for app',
+              'About Page',
               style: TextStyle(
                 fontSize: _drawerFontSize,
               ),
             ),
             onTap: () {
-              // Navigator.push(
-              //     context,
-              //     MaterialPageRoute(
-              //         builder: ((context) => Guidelines_for_app())));
+              Navigator.pushNamed(
+                context,
+                'Admin/About',
+              );
             },
           ),
           Divider(
             color: Theme.of(context).primaryColor,
             height: 1,
-          ),
-          ListTile(
-            leading: Icon(
-              Icons.logout_rounded,
-              size: _drawerIconSize,
-            ),
-            title: Text(
-              'Logout',
-              style: TextStyle(
-                fontSize: _drawerFontSize,
-              ),
-            ),
-            onTap: () {
-              showDialog(
-                context: context,
-                builder: (BuildContext context) {
-                  return ThemeHelper().LogoutalartDialog(
-                    "Logout comformation",
-                    "Are sure want to logout",
-                    context,
-                    "cancel",
-                    "Logout".toUpperCase(),
-                    () {},
-                    () {},
-                  );
-                },
-              );
-            },
           ),
         ],
       ),
