@@ -48,9 +48,11 @@ AppBar CustomAppBar(context, Titletext) {
               icon: Icon(Icons.notifications),
               iconSize: 30,
               onPressed: () => {
-                // Navigator.of(context).push(MaterialPageRoute(
-                //   builder: (context) => Notification_pages(),
-                // ))
+                Navigator.pushNamed(
+                  context,
+                  'Admin/Notification',
+                  // arguments: {'exampleArgument': exampleArgument},
+                )
               },
             ),
             Positioned(
