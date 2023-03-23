@@ -1,5 +1,3 @@
-// import 'dart:js';
-
 import 'package:araz_mobile_application/Constants/Colors.dart';
 import 'package:araz_mobile_application/Screens/AboutPage.dart';
 import 'package:araz_mobile_application/Screens/MarksAddPage.dart';
@@ -47,7 +45,6 @@ class LoginUiApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.grey.shade100,
         primarySwatch: Colors.grey,
       ),
-
       initialRoute: '/',
       onGenerateRoute: (RouteSettings settings) {
         WidgetBuilder builder;

@@ -49,16 +49,11 @@ class _SchoolViewPageState extends State<SchoolViewPage> {
                       ],
                     ),
                     child: Image.asset(
+                      //image
                       "lib/assets/images/School.png",
                       width: 80,
                       height: 80,
                     ),
-
-                    // Icon(
-                    //   Icons.person,
-                    //   size: 80,
-                    //   color: Colors.grey.shade300,
-                    // ),
                   ),
                   SizedBox(
                     height: 20,
@@ -103,6 +98,7 @@ class _SchoolViewPageState extends State<SchoolViewPage> {
                             child: Column(
                               children: <Widget>[
                                 Column(
+                                  //show details of pre-school
                                   children: <Widget>[
                                     ...ListTile.divideTiles(
                                       color: Colors.white,
@@ -127,6 +123,7 @@ class _SchoolViewPageState extends State<SchoolViewPage> {
                                   ],
                                 ),
                                 Container(
+                                  // implementing edit button for edit school
                                   padding: EdgeInsets.all(10),
                                   alignment: Alignment.bottomRight,
                                   child: FloatingActionButton(
@@ -135,36 +132,11 @@ class _SchoolViewPageState extends State<SchoolViewPage> {
                                     tooltip: "edit school details",
                                     onPressed: () {
                                       Navigator.pushNamed(
+                                        //navigate to edit page
                                         context,
                                         'school/editpage',
                                         arguments: args,
                                       );
-
-                                      // Navigator.of(context)
-                                      //     .push(MaterialPageRoute(
-                                      //   builder: (context) => Schooleditpage(),
-                                      // ));
-
-                                      // Navigator.of(context).push(
-                                      //     MaterialPageRoute(
-                                      //         builder: (context) => EditProfile(
-                                      //             userR: School(
-                                      //                 token: "",
-                                      //                 id: "",
-                                      //                 first_Name: userw!
-                                      //                     .first_Name
-                                      //                     .toString(),
-                                      //                 last_Name: userw!
-                                      //                     .last_Name
-                                      //                     .toString(),
-                                      //                 email: userw!.email,
-                                      //                 password: userw!.password,
-                                      //                 mobile_number:
-                                      //                     userw!.mobile_number,
-                                      //                 job_role: userw!.job_role,
-                                      //                 address: userw!.address,
-                                      //                 about_me:
-                                      //                     userw!.about_me))));
                                     },
                                     child: Icon(
                                       Icons.edit,
@@ -178,17 +150,10 @@ class _SchoolViewPageState extends State<SchoolViewPage> {
                         )
                       ],
                     ),
-                  )
+                  ),
                 ],
               ),
             )
-            //  Container(
-            //     margin: EdgeInsets.all(100),
-            //     child: Center(
-            //         child: CircularProgressIndicator(
-            //       color: Colors.green,
-            //     )),
-            //   ),
           ],
         ),
       ),
