@@ -14,10 +14,8 @@ import 'package:motion_toast/resources/arrays.dart';
 import '../Model/Marks.dart';
 
 class Markseditpage extends StatefulWidget {
-  // final Marks userR;
   Markseditpage({
     Key? key,
-    // required this.userR,
   }) : super(key: key);
 
   @override
@@ -34,13 +32,6 @@ class _MarkseditpageState extends State<Markseditpage> {
   late Marks newMarks;
   late Marks argsedit;
   final _formKeyupdate = GlobalKey<FormState>();
-  final List<String> items = [
-    'Teacher',
-    'Parents',
-    'Zone',
-    'Item4',
-    'Item5',
-  ];
 
   @override
   void initState() {
@@ -48,15 +39,7 @@ class _MarkseditpageState extends State<Markseditpage> {
     super.initState();
   }
 
-  void _addRecipeClick() {}
-  // void deletelist(String id) {
-  //   setState(() {
-  //     Ingredients.removeWhere((recipe) => recipe == id);
-  //   });
-  // }
-
   void MarksUpdateHandler() async {
-    // ignore: unnecessary_null_comparison
     argsedit = (ModalRoute.of(context)!.settings.arguments ?? '') as Marks;
     newMarks = Marks(
       id: argsedit.id,
@@ -93,8 +76,7 @@ class _MarkseditpageState extends State<Markseditpage> {
     }
     MarksRepo.addMarks(newMarks);
     print("sayanthan");
-    // _titleController.clear();
-    // _descriptionController.clear();
+
     setState(() {});
   }
 
@@ -159,28 +141,13 @@ class _MarkseditpageState extends State<Markseditpage> {
                                   width: 80,
                                   height: 80,
                                 ),
-
-                                // Icon(
-                                //   Icons.person,
-                                //   color: Colors.grey.shade300,
-                                //   size: 80.0,
-                                // ),
                               ),
-                              // Container(
-                              //   padding: EdgeInsets.fromLTRB(80, 80, 0, 0),
-                              //   child: Icon(
-                              //     Icons.add_circle,
-                              //     color: Colors.grey.shade700,
-                              //     size: 25.0,
-                              //   ),
-                              // ),
                             ],
                           ),
                         ),
                         SizedBox(
                           height: 25,
                         ),
-
                         Container(
                           alignment: Alignment.topLeft,
                           child: Text(
@@ -235,116 +202,6 @@ class _MarkseditpageState extends State<Markseditpage> {
                           ),
                           decoration: ThemeHelper().inputBoxDecorationShaddow(),
                         ),
-                        // SizedBox(height: 10.0),
-                        // Container(
-                        //   child: TextFormField(
-                        //     controller: _password,
-                        //     obscureText: true,
-                        //     decoration:
-                        //         ThemeHelper().textInputDecoration("Password*"),
-                        //     validator: (val) {
-                        //       if (val!.isEmpty) {
-                        //         return "Please enter your password";
-                        //       } else if (!RegExp(
-                        //               r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$')
-                        //           .hasMatch(val)) {
-                        //         return "Please enter vaild your password";
-                        //       }
-                        //       return null;
-                        //     },
-                        //   ),
-                        //   decoration: ThemeHelper().inputBoxDecorationShaddow(),
-                        // ),
-
-                        // Container(
-                        //   width: MediaQuery.of(context).size.width,
-                        //   child: DropdownButtonHideUnderline(
-                        //     child: DropdownButton2(
-                        //       isExpanded: true,
-                        //       hint: Row(
-                        //         children: const [
-                        //           Expanded(
-                        //             child: Text(
-                        //               'Select Item',
-                        //               style: TextStyle(
-                        //                 fontSize: 14,
-                        //                 fontWeight: FontWeight.bold,
-                        //                 color: Colors.black,
-                        //               ),
-                        //               overflow: TextOverflow.ellipsis,
-                        //             ),
-                        //           ),
-                        //         ],
-                        //       ),
-                        //       items: items
-                        //           .map((item) => DropdownMenuItem<String>(
-                        //                 value: item,
-                        //                 child: Text(
-                        //                   item,
-                        //                   style: const TextStyle(
-                        //                     fontSize: 14,
-                        //                     fontWeight: FontWeight.bold,
-                        //                     color: Colors.black,
-                        //                   ),
-                        //                   overflow: TextOverflow.ellipsis,
-                        //                 ),
-                        //               ))
-                        //           .toList(),
-                        //       value: selectedValue,
-                        //       onChanged: (value) {
-                        //         setState(() {
-                        //           selectedValue = value as String;
-                        //         });
-                        //       },
-                        //       buttonStyleData: ButtonStyleData(
-                        //         height: 50,
-                        //         width: 160,
-                        //         padding:
-                        //             const EdgeInsets.only(left: 14, right: 14),
-                        //         decoration: BoxDecoration(
-                        //           borderRadius: BorderRadius.circular(14),
-                        //           border: Border.all(
-                        //             color: Colors.black26,
-                        //           ),
-                        //           color: Colors.white,
-                        //         ),
-                        //         elevation: 2,
-                        //       ),
-                        //       iconStyleData: const IconStyleData(
-                        //         icon: Icon(
-                        //           size: 40,
-                        //           Icons.arrow_drop_down,
-                        //         ),
-                        //         iconSize: 14,
-                        //         iconEnabledColor: Color.fromARGB(255, 0, 0, 0),
-                        //         iconDisabledColor: Colors.grey,
-                        //       ),
-                        // dropdownStyleData: DropdownStyleData(
-                        //   maxHeight:
-                        //       MediaQuery.of(context).size.height * 0.25,
-                        //   width: MediaQuery.of(context).size.width * 0.94,
-                        //   padding: null,
-                        //   decoration: BoxDecoration(
-                        //     borderRadius: BorderRadius.circular(14),
-                        //     // color: Colors.redAccent,
-                        //   ),
-                        //         elevation: 8,
-                        //         offset: const Offset(-20, 0),
-                        //         scrollbarTheme: ScrollbarThemeData(
-                        //           radius: const Radius.circular(40),
-                        //           thickness:
-                        //               MaterialStateProperty.all<double>(6),
-                        //           thumbVisibility:
-                        //               MaterialStateProperty.all<bool>(true),
-                        //         ),
-                        //       ),
-                        //       menuItemStyleData: const MenuItemStyleData(
-                        //         height: 40,
-                        //         padding: EdgeInsets.only(left: 14, right: 14),
-                        //       ),
-                        //     ),
-                        //   ),
-                        // ),
                         SizedBox(height: 10.0),
                         Container(
                           alignment: Alignment.topLeft,
@@ -405,14 +262,7 @@ class _MarkseditpageState extends State<Markseditpage> {
                                   return 'Please enter valid marks';
                                 }
                                 return null;
-                              }
-                              //   if ((val!.length == 0) &&
-                              //       !RegExp(r"^(\d+)*$").hasMatch(val)) {
-                              //     return "Enter a valid phone number";
-                              //   }
-                              //   return null;
-                              // },
-                              ),
+                              }),
                           decoration: ThemeHelper().inputBoxDecorationShaddow(),
                         ),
                         SizedBox(height: 10.0),
@@ -440,17 +290,9 @@ class _MarkseditpageState extends State<Markseditpage> {
                                   return 'Please enter valid marks';
                                 }
                                 return null;
-                              }
-                              //   if ((val!.length == 0) &&
-                              //       !RegExp(r"^(\d+)*$").hasMatch(val)) {
-                              //     return "Enter a valid phone number";
-                              //   }
-                              //   return null;
-                              // },
-                              ),
+                              }),
                           decoration: ThemeHelper().inputBoxDecorationShaddow(),
                         ),
-
                         SizedBox(height: 17.0),
                         Container(
                           decoration:

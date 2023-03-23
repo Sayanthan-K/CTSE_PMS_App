@@ -1,17 +1,22 @@
 import 'package:araz_mobile_application/Constants/Colors.dart';
+import 'package:araz_mobile_application/Screens/AboutPage.dart';
 import 'package:araz_mobile_application/Screens/MarksAddPage.dart';
 import 'package:araz_mobile_application/Screens/MarksEditPage.dart';
 import 'package:araz_mobile_application/Screens/MarksListView.dart';
 import 'package:araz_mobile_application/Screens/MarksViewPage.dart';
+import 'package:araz_mobile_application/Screens/NotificationPage.dart';
+import 'package:araz_mobile_application/Screens/Privacy_policy.dart';
 import 'package:araz_mobile_application/Screens/SchoolAddPage.dart';
 import 'package:araz_mobile_application/Screens/SchoolEditPage.dart';
 import 'package:araz_mobile_application/Screens/SchoolListView.dart';
 import 'package:araz_mobile_application/Screens/SchoolViewPage.dart';
+import 'package:araz_mobile_application/Screens/SignupPage.dart';
 import 'package:araz_mobile_application/Screens/SplashScreen.dart';
 import 'package:araz_mobile_application/Screens/UserListView.dart';
 import 'package:araz_mobile_application/Screens/UserViewPage.dart';
 import 'package:araz_mobile_application/Screens/Usereditpage.dart';
 import 'package:araz_mobile_application/Screens/useraddpage.dart';
+import 'package:araz_mobile_application/Widgets/Bottom_navigation_Bar.dart';
 import 'package:araz_mobile_application/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -46,6 +51,9 @@ class LoginUiApp extends StatelessWidget {
         switch (settings.name) {
           case '/':
             builder = (BuildContext _) => SplashScreen(title: "title");
+            break;
+          case '/nav':
+            builder = (BuildContext _) => Bottom_navigation_Bar();
             break;
           case 'user/userListPage':
             builder = (BuildContext _) => new UserListView();
@@ -82,6 +90,18 @@ class LoginUiApp extends StatelessWidget {
             break;
           case 'school/editpage':
             builder = (BuildContext _) => new SchoolEditPage();
+            break;
+          case 'Admin/Notification':
+            builder = (BuildContext _) => new NotificationPage();
+            break;
+          case 'Admin/About':
+            builder = (BuildContext _) => new AboutPage();
+            break;
+          case 'Admin/Privacy policy':
+            builder = (BuildContext _) => new Privacy_policy();
+            break;
+          case 'Admin/auth/Signup':
+            builder = (BuildContext _) => new SignUpPage();
             break;
 
           default:
