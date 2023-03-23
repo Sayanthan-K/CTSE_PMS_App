@@ -28,7 +28,7 @@ class _NavigationsState extends State<Navigations> {
     {
       "imageURL": "lib/assets/images/announcement.png",
       "heading": "Announcements Management",
-      "path": ""
+      "path": "/Announcements/pre-schoolList"
     },
     {
       "imageURL": "lib/assets/images/examMarks.png",

@@ -2,6 +2,11 @@
 
 import 'package:araz_mobile_application/Constants/Colors.dart';
 import 'package:araz_mobile_application/Screens/AboutPage.dart';
+import 'package:araz_mobile_application/Screens/Announcement/AddAnnouncement.dart';
+import 'package:araz_mobile_application/Screens/Announcement/AnnouncementListView.dart';
+import 'package:araz_mobile_application/Screens/Announcement/AnnouncementView.dart';
+import 'package:araz_mobile_application/Screens/Announcement/EditAnnouncement.dart';
+import 'package:araz_mobile_application/Screens/Announcement/PreschoolListView.dart';
 import 'package:araz_mobile_application/Screens/MarksAddPage.dart';
 import 'package:araz_mobile_application/Screens/MarksEditPage.dart';
 import 'package:araz_mobile_application/Screens/MarksListView.dart';
@@ -105,6 +110,21 @@ class LoginUiApp extends StatelessWidget {
             break;
           case 'Admin/auth/Signup':
             builder = (BuildContext _) => new SignUpPage();
+            break;
+          case '/Announcements/pre-schoolList':
+            builder = (BuildContext _) => new PreschoolListView();
+            break;
+          case '/Announcements/AnnouncementslistPage':
+            builder = (BuildContext _) => new AnnouncementListView();
+            break;
+          case '/Announcements/AnnouncementsView':
+            builder = (BuildContext _) => new AnnouncementView();
+            break;
+          case '/Announcements/AddAnnouncements':
+            builder = (BuildContext _) => new AddAnnouncement();
+            break;
+          case '/Announcements/EditAnnouncements':
+            builder = (BuildContext _) => new EditAnnouncement();
             break;
 
           default:
