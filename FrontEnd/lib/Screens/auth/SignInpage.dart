@@ -47,6 +47,19 @@ class _SignInPageState extends State<SignInPage> {
     try {
       await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: _email.text.trim(), password: _password.text.trim());
+      MotionToast.success(
+        title: const Text(
+          'Successfully signIN',
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
+        description: const Text(
+          'Success fully SignIN ',
+          style: TextStyle(fontSize: 12),
+        ),
+        layoutOrientation: ToastOrientation.rtl,
+        animationType: AnimationType.fromRight,
+        dismissable: true,
+      ).show(context);
     } on FirebaseAuthException catch (e) {
       final snackBar = SnackBar(
         /// need to set following properties for best effect of awesome_snackbar_content
@@ -185,20 +198,20 @@ class _SignInPageState extends State<SignInPage> {
                                 onPressed: () {
                                   if (_formKeySignIN.currentState!.validate()) {
                                     signIn();
-                                    MotionToast.success(
-                                      title: const Text(
-                                        'Successfully signIN',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      description: const Text(
-                                        'Success fully SignIN ',
-                                        style: TextStyle(fontSize: 12),
-                                      ),
-                                      layoutOrientation: ToastOrientation.rtl,
-                                      animationType: AnimationType.fromRight,
-                                      dismissable: true,
-                                    ).show(context);
+                                    // MotionToast.success(
+                                    //   title: const Text(
+                                    //     'Successfully signIN',
+                                    //     style: TextStyle(
+                                    //         fontWeight: FontWeight.bold),
+                                    //   ),
+                                    //   description: const Text(
+                                    //     'Success fully SignIN ',
+                                    //     style: TextStyle(fontSize: 12),
+                                    //   ),
+                                    //   layoutOrientation: ToastOrientation.rtl,
+                                    //   animationType: AnimationType.fromRight,
+                                    //   dismissable: true,
+                                    // ).show(context);
                                   }
                                 },
                               ),
