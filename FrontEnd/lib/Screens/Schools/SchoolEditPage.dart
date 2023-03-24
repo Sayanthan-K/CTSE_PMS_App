@@ -430,7 +430,7 @@ class _SchoolEditPageState extends State<SchoolEditPage> {
                                 SchoolUpdateHandler();
                                 Navigator.pushNamed(
                                   context,
-                                  'school/schoolViewPage',
+                                  'school/schoolListPage',
                                   arguments: newSchool,
                                 );
                                 MotionToast.success(
