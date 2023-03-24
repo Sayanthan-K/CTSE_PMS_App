@@ -17,9 +17,11 @@ AppBar CustomAppBar(context, Titletext) {
       //     "lib/assets/images/logoK.png",
       //   ),
       // ),
-      Text(
-        Titletext,
-        style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+      Flexible(
+        child: Text(
+          Titletext,
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+        ),
       ),
     ]),
     elevation: 0.1,
