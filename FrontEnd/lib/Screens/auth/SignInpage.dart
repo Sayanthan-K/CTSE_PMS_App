@@ -1,8 +1,10 @@
 import 'package:araz_mobile_application/Constants/Colors.dart';
+
 import 'package:araz_mobile_application/Helper/theme_helper.dart';
 import 'package:araz_mobile_application/Widgets/Bottom_navigation_Bar.dart';
 import 'package:araz_mobile_application/Widgets/CustomAppBar.dart';
 import 'package:araz_mobile_application/Widgets/HeaderWidget.dart';
+import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -19,6 +21,7 @@ class SignInPage extends StatefulWidget {
 }
 
 class _SignInPageState extends State<SignInPage> {
+  final messengerKey = GlobalKey<ScaffoldMessengerState>();
   final navigatorKey = GlobalKey<NavigatorState>();
   final _formKeySignIN = GlobalKey<FormState>();
   TextEditingController _email = TextEditingController();
@@ -45,24 +48,40 @@ class _SignInPageState extends State<SignInPage> {
       await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: _email.text.trim(), password: _password.text.trim());
     } on FirebaseAuthException catch (e) {
-      print(e);
+      final snackBar = SnackBar(
+        /// need to set following properties for best effect of awesome_snackbar_content
+        elevation: 0,
+        behavior: SnackBarBehavior.floating,
+        backgroundColor: Colors.transparent,
+        content: AwesomeSnackbarContent(
+          title: 'error',
+          message: '${e.message}',
+
+          /// change contentType to ContentType.success, ContentType.warning or ContentType.help for variants
+          contentType: ContentType.failure,
+        ),
+      );
+
+      ScaffoldMessenger.of(context)
+        ..hideCurrentSnackBar()
+        ..showSnackBar(snackBar);
     }
     Navigator.of(context)
         .pushNamedAndRemoveUntil('/nav', (Route<dynamic> route) => false);
 
-    MotionToast.success(
-      title: const Text(
-        'Successfully signIN',
-        style: TextStyle(fontWeight: FontWeight.bold),
-      ),
-      description: const Text(
-        'Success fully SignIN ',
-        style: TextStyle(fontSize: 12),
-      ),
-      layoutOrientation: ToastOrientation.rtl,
-      animationType: AnimationType.fromRight,
-      dismissable: true,
-    ).show(context);
+    // MotionToast.success(
+    //   title: const Text(
+    //     'Successfully signIN',
+    //     style: TextStyle(fontWeight: FontWeight.bold),
+    //   ),
+    //   description: const Text(
+    //     'Success fully SignIN ',
+    //     style: TextStyle(fontSize: 12),
+    //   ),
+    //   layoutOrientation: ToastOrientation.rtl,
+    //   animationType: AnimationType.fromRight,
+    //   dismissable: true,
+    // ).show(context);
   }
 
   @override
@@ -166,6 +185,20 @@ class _SignInPageState extends State<SignInPage> {
                                 onPressed: () {
                                   if (_formKeySignIN.currentState!.validate()) {
                                     signIn();
+                                    MotionToast.success(
+                                      title: const Text(
+                                        'Successfully signIN',
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                      description: const Text(
+                                        'Success fully SignIN ',
+                                        style: TextStyle(fontSize: 12),
+                                      ),
+                                      layoutOrientation: ToastOrientation.rtl,
+                                      animationType: AnimationType.fromRight,
+                                      dismissable: true,
+                                    ).show(context);
                                   }
                                 },
                               ),

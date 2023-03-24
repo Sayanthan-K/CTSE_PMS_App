@@ -1,5 +1,6 @@
 import 'package:araz_mobile_application/Helper/theme_helper.dart';
 import 'package:araz_mobile_application/Widgets/HeaderWidget.dart';
+import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -35,7 +36,23 @@ class _SignUpPageState extends State<SignUpPage> {
       await FirebaseAuth.instance.createUserWithEmailAndPassword(
           email: _email.text.trim(), password: _password.text.trim());
     } on FirebaseAuthException catch (e) {
-      print(e);
+      final snackBar = SnackBar(
+        /// need to set following properties for best effect of awesome_snackbar_content
+        elevation: 0,
+        behavior: SnackBarBehavior.floating,
+        backgroundColor: Colors.transparent,
+        content: AwesomeSnackbarContent(
+          title: 'error',
+          message: '${e.message}',
+
+          /// change contentType to ContentType.success, ContentType.warning or ContentType.help for variants
+          contentType: ContentType.failure,
+        ),
+      );
+
+      ScaffoldMessenger.of(context)
+        ..hideCurrentSnackBar()
+        ..showSnackBar(snackBar);
     }
     Navigator.of(context)
         .pushNamedAndRemoveUntil('/nav', (Route<dynamic> route) => false);

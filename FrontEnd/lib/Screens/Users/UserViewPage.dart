@@ -1,26 +1,26 @@
-import 'package:araz_mobile_application/Model/Marks.dart';
-import 'package:araz_mobile_application/Screens/Markseditpage.dart';
+import 'package:araz_mobile_application/Model/User.dart';
+
 import 'package:araz_mobile_application/Widgets/CustomAppBar.dart';
 import 'package:araz_mobile_application/Widgets/HeaderWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
-class MarksViewPage extends StatefulWidget {
-  const MarksViewPage({super.key});
+class UserViewPage extends StatefulWidget {
+  const UserViewPage({super.key});
 
   @override
-  State<MarksViewPage> createState() => _MarksViewPageState();
+  State<UserViewPage> createState() => _UserViewPageState();
 }
 
-class _MarksViewPageState extends State<MarksViewPage> {
+class _UserViewPageState extends State<UserViewPage> {
   // Initial Selected Value
 
   @override
   Widget build(BuildContext context) {
-    final args = (ModalRoute.of(context)!.settings.arguments ?? '') as Marks;
+    final args = (ModalRoute.of(context)!.settings.arguments ?? '') as User;
     return Scaffold(
-      appBar: CustomAppBar(context, "Marks details"),
+      appBar: CustomAppBar(context, "User details"),
       body: SingleChildScrollView(
         child: Stack(
           children: [
@@ -49,7 +49,7 @@ class _MarksViewPageState extends State<MarksViewPage> {
                       ],
                     ),
                     child: Image.asset(
-                      "lib/assets/images/Marks.png",
+                      "lib/assets/images/User.png",
                       width: 80,
                       height: 80,
                     ),
@@ -73,6 +73,16 @@ class _MarksViewPageState extends State<MarksViewPage> {
                       ],
                     ),
                   ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Text(
+                    args.usertype,
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
                   Container(
                     padding: EdgeInsets.all(10),
                     child: Column(
@@ -82,7 +92,7 @@ class _MarksViewPageState extends State<MarksViewPage> {
                               const EdgeInsets.only(left: 8.0, bottom: 8.0),
                           alignment: Alignment.topLeft,
                           child: Text(
-                            "Marks Information",
+                            "User Information",
                             style: TextStyle(
                               color: Colors.black87,
                               fontWeight: FontWeight.w500,
@@ -104,19 +114,24 @@ class _MarksViewPageState extends State<MarksViewPage> {
                                       color: Colors.white,
                                       tiles: [
                                         ListTile(
-                                          leading: Icon(Icons.grade),
-                                          title: Text("Maths"),
-                                          subtitle: Text(args.maths),
+                                          leading: Icon(Icons.email),
+                                          title: Text("Email"),
+                                          subtitle: Text(args.email),
                                         ),
                                         ListTile(
-                                          leading: Icon(Icons.grade),
-                                          title: Text("Science"),
-                                          subtitle: Text(args.science),
+                                          leading: Icon(Icons.phone),
+                                          title: Text("Phone"),
+                                          subtitle: Text(args.mobile_number),
                                         ),
                                         ListTile(
-                                          leading: Icon(Icons.grade),
-                                          title: Text("English"),
-                                          subtitle: Text(args.english),
+                                          leading: Icon(Icons.location_on),
+                                          title: Text("Address"),
+                                          subtitle: Text(args.address),
+                                        ),
+                                        ListTile(
+                                          leading: Icon(Icons.list_alt),
+                                          title: Text("Age"),
+                                          subtitle: Text(args.age),
                                         ),
                                       ],
                                     ),
@@ -128,11 +143,11 @@ class _MarksViewPageState extends State<MarksViewPage> {
                                   child: FloatingActionButton(
                                     foregroundColor: Colors.white,
                                     hoverColor: Colors.white,
-                                    tooltip: "edit marks details",
+                                    tooltip: "edit user details",
                                     onPressed: () {
                                       Navigator.pushNamed(
                                         context,
-                                        'mark/editpage',
+                                        'user/editpage',
                                         arguments: args,
                                       );
                                     },
