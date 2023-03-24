@@ -1,5 +1,7 @@
 import 'package:araz_mobile_application/Helper/theme_helper.dart';
+import 'package:araz_mobile_application/Model/Announcement.dart';
 import 'package:araz_mobile_application/Model/School.dart';
+import 'package:araz_mobile_application/Repository/Announcement.dart';
 import 'package:araz_mobile_application/Repository/SchoolRepository.dart';
 import 'package:araz_mobile_application/Widgets/CustomAppBar.dart';
 import 'package:araz_mobile_application/Widgets/HeaderWidget.dart';
@@ -18,50 +20,25 @@ class AddAnnouncement extends StatefulWidget {
 }
 
 class _AddAnnouncementState extends State<AddAnnouncement> {
-  TextEditingController _email = TextEditingController();
-  TextEditingController _name = TextEditingController();
-  TextEditingController _mobile_number = TextEditingController();
-  TextEditingController _address = TextEditingController();
-  late School newSchool;
+  TextEditingController _title = TextEditingController();
+  TextEditingController _message = TextEditingController();
+  TextEditingController _date = TextEditingController();
 
-  var SchoolRepo = SchoolRepository();
+  var AnnouncementRepo = AnnouncementRepository();
 
   void SchoolAddHandler() async {
-    newSchool = School(
+    final announcement =
+        (ModalRoute.of(context)!.settings.arguments ?? '') as Announcement;
+    var newAnnouncement = new Announcement(
       id: DateTime.now().microsecondsSinceEpoch.toString(),
-      email: _email.text,
-      name: _name.text,
-      mobile_number: _mobile_number.text,
-      address: _address.text,
+      schoolid: announcement.schoolid,
+      date: _date.text,
+      title: _title.text,
+      message: _message.text,
     );
-    if (_name.text == null &&
-        _email.text == null &&
-        _mobile_number.text == null &&
-        _address.text == null) {
-      MotionToast.error(
-        title: const Text(
-          'Error',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        description: const Text(
-          'Must filled all filed ',
-          style: TextStyle(
-            fontSize: 13,
-          ),
-        ),
-        position: MotionToastPosition.bottom,
-        barrierColor: Colors.black.withOpacity(0.3),
-        width: 300,
-        height: 80,
-        dismissable: false,
-      ).show(context);
-    }
-    SchoolRepo.addSchool(newSchool);
-    print("Ananthan");
-    // _titleController.clear();
-    // _descriptionController.clear();
+
+    AnnouncementRepo.addAnnouncement(newAnnouncement);
+
     setState(() {});
   }
 
@@ -69,10 +46,6 @@ class _AddAnnouncementState extends State<AddAnnouncement> {
   @override
   void dispose() {
     super.dispose();
-    _email.dispose();
-    _name.dispose();
-    _mobile_number.dispose();
-    _address.dispose();
   }
 
   @override
@@ -82,6 +55,8 @@ class _AddAnnouncementState extends State<AddAnnouncement> {
 
   @override
   Widget build(BuildContext context) {
+    final announcement =
+        (ModalRoute.of(context)!.settings.arguments ?? '') as Announcement;
     return Scaffold(
       appBar: CustomAppBar(context, "Addschoolpage"),
       body: SingleChildScrollView(
@@ -134,7 +109,7 @@ class _AddAnnouncementState extends State<AddAnnouncement> {
                         Container(
                           alignment: Alignment.topLeft,
                           child: Text(
-                            'Name',
+                            'Title',
                             textAlign: TextAlign.left,
                             style: TextStyle(
                                 color: Colors.black,
@@ -144,24 +119,91 @@ class _AddAnnouncementState extends State<AddAnnouncement> {
                         ),
                         Container(
                           child: TextFormField(
-                            controller: _name,
+                            controller: _title,
                             decoration: ThemeHelper().textInputDecoration(
-                              'Name',
+                              'Title',
                             ),
                             validator: (val) {
                               if ((val!.isEmpty)) {
-                                return "Enter a valid Name";
+                                return "Enter a valid Title";
                               }
                               return null;
                             },
                           ),
                           decoration: ThemeHelper().inputBoxDecorationShaddow(),
                         ),
+                        Container(
+                          alignment: Alignment.topLeft,
+                          child: Text(
+                            'Date',
+                            textAlign: TextAlign.left,
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                        TextFormField(
+                          controller: _date,
+                          decoration: InputDecoration(
+                            // border: InputBorder.none,
+                            hintText: "Date",
+                            hintStyle: TextStyle(
+                              fontSize: 17,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'Open Sans',
+                            ),
+                            // counterText: lableText,
+                            fillColor: Colors.white,
+
+                            labelStyle: TextStyle(
+                              fontSize: 19,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'Open Sans',
+                            ),
+                            filled: true,
+                            contentPadding: EdgeInsets.fromLTRB(10, 10, 20, 10),
+                            // focusedBorder: InputBorder.none,
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10.0),
+                              borderSide: BorderSide(
+                                  color: Color.fromARGB(255, 0, 202, 248)),
+                            ),
+                            // enabledBorder: InputBorder.none,
+                            enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+                                borderSide: BorderSide(color: Colors.grey)),
+                            errorBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+                                borderSide:
+                                    BorderSide(color: Colors.red, width: 2.0)),
+                            focusedErrorBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+                                borderSide:
+                                    BorderSide(color: Colors.red, width: 2.0)),
+                          ),
+                          onTap: () async {
+                            DateTime? date = DateTime(1900);
+                            FocusScope.of(context)
+                                .requestFocus(new FocusNode());
+
+                            date = await showDatePicker(
+                                context: context,
+                                initialDate: DateTime.now(),
+                                firstDate: DateTime(1900),
+                                lastDate: DateTime(2100));
+                            if (date != null) {
+                              // _date.text = "${date.toString()}";
+                              _date.text =
+                                  "${date.day.toString()}- ${date.month.toString()}-${date.year.toString()}";
+                            }
+                          },
+                        ),
                         SizedBox(height: 10.0),
                         Container(
                           alignment: Alignment.topLeft,
                           child: Text(
-                            'E-mail',
+                            'Message',
                             textAlign: TextAlign.left,
                             style: TextStyle(
                                 color: Colors.black,
@@ -171,81 +213,21 @@ class _AddAnnouncementState extends State<AddAnnouncement> {
                         ),
                         Container(
                           child: TextFormField(
-                            controller: _email,
-                            decoration:
-                                ThemeHelper().textInputDecoration("E-mail"),
-                            keyboardType: TextInputType.emailAddress,
-                            validator: (val) {
-                              if (val!.isEmpty) {
-                                return "Enter a email address";
-                              } else if (!RegExp(
-                                      r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?)*$")
-                                  .hasMatch(val)) {
-                                return "Enter a valid email address";
-                              } else {
-                                return null;
-                              }
-                            },
-                          ),
-                          decoration: ThemeHelper().inputBoxDecorationShaddow(),
-                        ),
-                        SizedBox(height: 10.0),
-                        Container(
-                          alignment: Alignment.topLeft,
-                          child: Text(
-                            'Mobile Number',
-                            textAlign: TextAlign.left,
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                        Container(
-                          child: TextFormField(
-                              controller: _mobile_number,
-                              decoration: ThemeHelper()
-                                  .textInputDecoration("Mobile Number"),
-                              keyboardType: TextInputType.phone,
-                              validator: (val) {
-                                if (val!.isEmpty) {
-                                  return 'Please enter mobile number';
-                                } else if (val.length != 10) {
-                                  return 'Please enter 10 digit mobile number';
-                                } else if (!RegExp(r"^(\d+)*$").hasMatch(val)) {
-                                  return 'Please enter valid mobile number';
-                                }
-                                return null;
-                              }),
-                          decoration: ThemeHelper().inputBoxDecorationShaddow(),
-                        ),
-                        SizedBox(height: 10.0),
-                        Container(
-                          alignment: Alignment.topLeft,
-                          child: Text(
-                            'Address',
-                            textAlign: TextAlign.left,
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                        Container(
-                          child: TextFormField(
-                            controller: _address,
-                            decoration:
-                                ThemeHelper().textInputDecoration('address'),
+                            controller: _message,
+                            decoration: ThemeHelper().textInputDecoration(
+                              'Message',
+                            ),
                             validator: (val) {
                               if ((val!.isEmpty)) {
-                                return "Enter a valid address";
+                                return "Enter a valid Message";
                               }
                               return null;
                             },
                           ),
                           decoration: ThemeHelper().inputBoxDecorationShaddow(),
                         ),
-                        SizedBox(height: 17.0),
+                        SizedBox(height: 10.0),
+                        SizedBox(height: 10.0),
                         Container(
                           decoration:
                               ThemeHelper().buttonBoxDecoration(context),
@@ -255,7 +237,7 @@ class _AddAnnouncementState extends State<AddAnnouncement> {
                               padding:
                                   const EdgeInsets.fromLTRB(40, 10, 40, 10),
                               child: Text(
-                                "addSchool".toUpperCase(),
+                                "add".toUpperCase(),
                                 style: TextStyle(
                                   fontSize: 20,
                                   fontWeight: FontWeight.bold,
@@ -268,17 +250,18 @@ class _AddAnnouncementState extends State<AddAnnouncement> {
                                 SchoolAddHandler();
                                 Navigator.pushNamed(
                                   context,
-                                  'school/schoolListPage',
+                                  '/Announcements/AnnouncementsView',
+                                  arguments: announcement,
                                 );
                                 MotionToast.success(
                                   title: const Text(
-                                    'Success',
+                                    'Successfully added the Annoucement',
                                     style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
                                   description: const Text(
-                                    'sucessfully added school details  ',
+                                    'Successfully added the Annoucement',
                                     style: TextStyle(
                                       fontSize: 13,
                                     ),

@@ -1,4 +1,5 @@
-import 'package:araz_mobile_application/Model/School.dart';
+import 'package:araz_mobile_application/Model/Announcement.dart';
+
 import 'package:araz_mobile_application/Widgets/CustomAppBar.dart';
 import 'package:araz_mobile_application/Widgets/HeaderWidget.dart';
 import 'package:flutter/material.dart';
@@ -13,11 +14,13 @@ class AnnouncementView extends StatefulWidget {
 }
 
 class _AnnouncementViewState extends State<AnnouncementView> {
+  // late Announcement announcement;
   // Initial Selected Value
 
   @override
   Widget build(BuildContext context) {
-    final args = (ModalRoute.of(context)!.settings.arguments ?? '') as School;
+    final announcement =
+        (ModalRoute.of(context)!.settings.arguments ?? '') as Announcement;
     return Scaffold(
       appBar: CustomAppBar(context, "Announcement details"),
       body: SingleChildScrollView(
@@ -66,7 +69,7 @@ class _AnnouncementViewState extends State<AnnouncementView> {
                     TextSpan(
                       children: [
                         TextSpan(
-                          text: args.name,
+                          text: announcement.title,
                           style: TextStyle(
                               fontSize: 22, fontWeight: FontWeight.bold),
                         ),
@@ -85,7 +88,7 @@ class _AnnouncementViewState extends State<AnnouncementView> {
                               const EdgeInsets.only(left: 8.0, bottom: 8.0),
                           alignment: Alignment.topLeft,
                           child: Text(
-                            "School Information",
+                            "Announcements Information",
                             style: TextStyle(
                               color: Colors.black87,
                               fontWeight: FontWeight.w500,
@@ -107,19 +110,19 @@ class _AnnouncementViewState extends State<AnnouncementView> {
                                       color: Colors.white,
                                       tiles: [
                                         ListTile(
-                                          leading: Icon(Icons.email),
-                                          title: Text("Email"),
-                                          subtitle: Text(args.email),
+                                          leading: Icon(Icons.title),
+                                          title: Text("Title"),
+                                          subtitle: Text(announcement.title),
                                         ),
                                         ListTile(
-                                          leading: Icon(Icons.phone),
-                                          title: Text("Phone"),
-                                          subtitle: Text(args.mobile_number),
+                                          leading: Icon(Icons.description),
+                                          title: Text("message"),
+                                          subtitle: Text(announcement.message),
                                         ),
                                         ListTile(
-                                          leading: Icon(Icons.location_on),
-                                          title: Text("Address"),
-                                          subtitle: Text(args.address),
+                                          leading: Icon(Icons.date_range),
+                                          title: Text("Date"),
+                                          subtitle: Text(announcement.date),
                                         ),
                                       ],
                                     ),
@@ -131,39 +134,13 @@ class _AnnouncementViewState extends State<AnnouncementView> {
                                   child: FloatingActionButton(
                                     foregroundColor: Colors.white,
                                     hoverColor: Colors.white,
-                                    tooltip: "edit school details",
+                                    tooltip: "edit Announcements details",
                                     onPressed: () {
                                       Navigator.pushNamed(
                                         context,
                                         '/Announcements/EditAnnouncements',
-                                        arguments: args,
+                                        arguments: announcement,
                                       );
-
-                                      // Navigator.of(context)
-                                      //     .push(MaterialPageRoute(
-                                      //   builder: (context) => Schooleditpage(),
-                                      // ));
-
-                                      // Navigator.of(context).push(
-                                      //     MaterialPageRoute(
-                                      //         builder: (context) => EditProfile(
-                                      //             userR: School(
-                                      //                 token: "",
-                                      //                 id: "",
-                                      //                 first_Name: userw!
-                                      //                     .first_Name
-                                      //                     .toString(),
-                                      //                 last_Name: userw!
-                                      //                     .last_Name
-                                      //                     .toString(),
-                                      //                 email: userw!.email,
-                                      //                 password: userw!.password,
-                                      //                 mobile_number:
-                                      //                     userw!.mobile_number,
-                                      //                 job_role: userw!.job_role,
-                                      //                 address: userw!.address,
-                                      //                 about_me:
-                                      //                     userw!.about_me))));
                                     },
                                     child: Icon(
                                       Icons.edit,
@@ -181,13 +158,6 @@ class _AnnouncementViewState extends State<AnnouncementView> {
                 ],
               ),
             )
-            //  Container(
-            //     margin: EdgeInsets.all(100),
-            //     child: Center(
-            //         child: CircularProgressIndicator(
-            //       color: Colors.green,
-            //     )),
-            //   ),
           ],
         ),
       ),

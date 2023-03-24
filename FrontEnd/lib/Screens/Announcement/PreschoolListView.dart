@@ -71,7 +71,7 @@ class _PreschoolListViewState extends State<PreschoolListView> {
                               Navigator.pushNamed(
                                 context,
                                 '/Announcements/AnnouncementslistPage',
-                                arguments: snapshot.data[index],
+                                arguments: snapshot.data![index],
                               );
                             },
                             child: Card(

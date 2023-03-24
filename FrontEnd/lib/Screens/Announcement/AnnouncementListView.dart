@@ -1,5 +1,8 @@
+import 'package:araz_mobile_application/Model/Announcement.dart';
 import 'package:araz_mobile_application/Model/School.dart';
-import 'package:araz_mobile_application/Repository/SchoolRepository.dart';
+
+import 'package:araz_mobile_application/Repository/Announcement.dart';
+
 import 'package:araz_mobile_application/Widgets/CustomAppBar.dart';
 import 'package:araz_mobile_application/Widgets/custom_AlertDialogbox.dart';
 import 'package:flutter/material.dart';
@@ -16,11 +19,12 @@ class AnnouncementListView extends StatefulWidget {
 }
 
 class _AnnouncementListViewState extends State<AnnouncementListView> {
-  late Stream<List<School>> School_list;
-  var RecipeRepo = SchoolRepository();
-  void deleteSchool(School id) {
+  late Stream<List<Announcement>> Announcement_list;
+
+  var Announcement_Repo = AnnouncementRepository();
+  void deleteAnnouncement(Announcement id) {
     setState(() {
-      RecipeRepo.deleteSchool(id);
+      Announcement_Repo.deleteAnnouncement(id);
       Navigator.of(context).pop();
       MotionToast.delete(
         title: const Text(
@@ -37,7 +41,9 @@ class _AnnouncementListViewState extends State<AnnouncementListView> {
   }
 
   void loaddata() {
-    School_list = RecipeRepo.AllSchools();
+    Announcement_list = Announcement_Repo.AllAnnouncement();
+
+    // print(Announcement_list.length);
   }
 
   @override
@@ -49,6 +55,9 @@ class _AnnouncementListViewState extends State<AnnouncementListView> {
 
   @override
   Widget build(BuildContext context) {
+    final school = (ModalRoute.of(context)!.settings.arguments ?? '') as School;
+    print(school);
+
     final customheight = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: CustomAppBar(context, "ALL Announcement"),
@@ -58,7 +67,7 @@ class _AnnouncementListViewState extends State<AnnouncementListView> {
           height: customheight * 0.90,
           width: MediaQuery.of(context).size.width,
           child: StreamBuilder(
-              stream: School_list,
+              stream: Announcement_list,
               builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
                 if (snapshot.hasData) {
                   if (snapshot.data.isEmpty) {
@@ -107,7 +116,7 @@ class _AnnouncementListViewState extends State<AnnouncementListView> {
                                       children: [
                                         TextSpan(
                                           text:
-                                              '${snapshot.data![index].name}' +
+                                              '${snapshot.data![index].title}' +
                                                   " ",
                                           style: TextStyle(
                                               fontSize: 20,
@@ -137,7 +146,7 @@ class _AnnouncementListViewState extends State<AnnouncementListView> {
                                                   }),
                                                   Righttbuttontext: "Yes",
                                                   RightOnTap: (() {
-                                                    deleteSchool(
+                                                    deleteAnnouncement(
                                                         snapshot.data![index]);
                                                   })));
                                     });
@@ -162,14 +171,10 @@ class _AnnouncementListViewState extends State<AnnouncementListView> {
           alignment: Alignment.bottomCenter,
           child: FloatingActionButton(
             onPressed: () {
-              // Navigator.of(context).push(MaterialPageRoute(
-              //   builder: (context) => SchooladdPage(),
-              // ));
-
               Navigator.pushNamed(
                 context,
                 '/Announcements/AddAnnouncements',
-                // arguments: {'exampleArgument': exampleArgument},
+                arguments: school,
               );
             },
             tooltip: "add list item",
