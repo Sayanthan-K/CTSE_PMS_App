@@ -1,8 +1,7 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:araz_mobile_application/Helper/theme_helper.dart';
+import 'package:araz_mobile_application/Model/User.dart';
 import 'package:araz_mobile_application/Repository/UserRepository.dart';
 import 'package:araz_mobile_application/Widgets/CustomAppBar.dart';
-
 import 'package:araz_mobile_application/Widgets/HeaderWidget.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
@@ -11,20 +10,21 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:motion_toast/motion_toast.dart';
 import 'package:motion_toast/resources/arrays.dart';
 
-import '../Model/User.dart';
-
-class Usereditpage extends StatefulWidget {
-  // final User userR;
-  Usereditpage({
-    Key? key,
-    // required this.userR,
-  }) : super(key: key);
+class UseraddPage extends StatefulWidget {
+  const UseraddPage({super.key});
 
   @override
-  State<Usereditpage> createState() => _UsereditpageState();
+  State<UseraddPage> createState() => _UseraddPageState();
 }
 
-class _UsereditpageState extends State<Usereditpage> {
+class _UseraddPageState extends State<UseraddPage> {
+  // String? selectedValue;
+  final List<String> items = [
+    'Teacher',
+    'Parents',
+    'Student',
+  ];
+
   TextEditingController _first_Name = TextEditingController();
   TextEditingController _last_Name = TextEditingController();
   TextEditingController _email = TextEditingController();
@@ -32,28 +32,16 @@ class _UsereditpageState extends State<Usereditpage> {
   TextEditingController _mobile_number = TextEditingController();
   TextEditingController _age = TextEditingController();
   TextEditingController _address = TextEditingController();
-  var UserRepo = UserRepository();
+  TextEditingController _about_me = TextEditingController();
   late User newUser;
-  late User argsedit;
-  final _formKeyupdate = GlobalKey<FormState>();
-  final List<String> items = [
-    'Teacher',
-    'Parents',
-    'Zone',
-    'Item4',
-    'Item5',
-  ];
 
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-  }
+  var UserRepo = UserRepository();
 
-  void UserUpdateHandler() async {
-    argsedit = (ModalRoute.of(context)!.settings.arguments ?? '') as User;
+  void UserAddHandler() async {
+    // ignore: unnecessary_null_comparison
+
     newUser = User(
-      id: argsedit.id,
+      id: DateTime.now().microsecondsSinceEpoch.toString(),
       first_Name: _first_Name.text,
       last_Name: _last_Name.text,
       email: _email.text,
@@ -90,8 +78,13 @@ class _UsereditpageState extends State<Usereditpage> {
       ).show(context);
     }
     UserRepo.addUser(newUser);
+    print("sayanthan");
+    // _titleController.clear();
+    // _descriptionController.clear();
+    setState(() {});
   }
 
+  final _formKeyAdd = GlobalKey<FormState>();
   @override
   void dispose() {
     super.dispose();
@@ -102,21 +95,19 @@ class _UsereditpageState extends State<Usereditpage> {
     _mobile_number.dispose();
     _age.dispose();
     _address.dispose();
+    _about_me.dispose();
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    argsedit = (ModalRoute.of(context)!.settings.arguments ?? '') as User;
-    _first_Name.text = argsedit.first_Name;
-    _last_Name.text = argsedit.last_Name;
-    _email.text = argsedit.email;
-    _Usertype.text = argsedit.usertype;
-    _mobile_number.text = argsedit.mobile_number;
-    _age.text = argsedit.age;
-    _address.text = argsedit.address;
-
     return Scaffold(
-      appBar: CustomAppBar(context, "Edituserpage"),
+      appBar: CustomAppBar(context, "Adduserpage"),
       body: SingleChildScrollView(
         child: Stack(
           children: [
@@ -131,7 +122,7 @@ class _UsereditpageState extends State<Usereditpage> {
               child: Column(
                 children: [
                   Form(
-                    key: _formKeyupdate,
+                    key: _formKeyAdd,
                     child: Column(
                       children: [
                         GestureDetector(
@@ -339,7 +330,14 @@ class _UsereditpageState extends State<Usereditpage> {
                                   return 'Please enter valid mobile number';
                                 }
                                 return null;
-                              }),
+                              }
+                              //   if ((val!.length == 0) &&
+                              //       !RegExp(r"^(\d+)*$").hasMatch(val)) {
+                              //     return "Enter a valid phone number";
+                              //   }
+                              //   return null;
+                              // },
+                              ),
                           decoration: ThemeHelper().inputBoxDecorationShaddow(),
                         ),
                         SizedBox(height: 10.0),
@@ -405,7 +403,7 @@ class _UsereditpageState extends State<Usereditpage> {
                               padding:
                                   const EdgeInsets.fromLTRB(40, 10, 40, 10),
                               child: Text(
-                                "UpdateUser".toUpperCase(),
+                                "addUser".toUpperCase(),
                                 style: TextStyle(
                                   fontSize: 20,
                                   fontWeight: FontWeight.bold,
@@ -414,22 +412,22 @@ class _UsereditpageState extends State<Usereditpage> {
                               ),
                             ),
                             onPressed: () {
-                              if (_formKeyupdate.currentState!.validate()) {
-                                UserUpdateHandler();
+                              if (_formKeyAdd.currentState!.validate()) {
+                                UserAddHandler();
                                 Navigator.pushNamed(
                                   context,
-                                  'user/userViewPage',
-                                  arguments: newUser,
+                                  'user/userListPage',
+                                  // arguments: {'exampleArgument': exampleArgument},
                                 );
                                 MotionToast.success(
                                   title: const Text(
-                                    'Success',
+                                    'Successfully User Added',
                                     style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
                                   description: const Text(
-                                    'sucessfully added user details  ',
+                                    'sucess fully added user details  ',
                                     style: TextStyle(
                                       fontSize: 13,
                                     ),

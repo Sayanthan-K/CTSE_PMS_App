@@ -1,7 +1,6 @@
-import 'package:araz_mobile_application/Screens/UserListView.dart';
-import 'package:araz_mobile_application/Screens/SchoolListView.dart';
+import 'package:araz_mobile_application/Screens/Users/UserListView.dart';
+import 'package:araz_mobile_application/Screens/Schools/SchoolListView.dart';
 
-import '../Screens/LIstViewItems.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';

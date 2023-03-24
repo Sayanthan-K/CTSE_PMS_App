@@ -1,26 +1,26 @@
-import 'package:araz_mobile_application/Model/User.dart';
-import 'package:araz_mobile_application/Screens/usereditpage.dart';
+import 'package:araz_mobile_application/Model/Marks.dart';
+import 'package:araz_mobile_application/Screens/Marks/Markseditpage.dart';
 import 'package:araz_mobile_application/Widgets/CustomAppBar.dart';
 import 'package:araz_mobile_application/Widgets/HeaderWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
-class UserViewPage extends StatefulWidget {
-  const UserViewPage({super.key});
+class MarksViewPage extends StatefulWidget {
+  const MarksViewPage({super.key});
 
   @override
-  State<UserViewPage> createState() => _UserViewPageState();
+  State<MarksViewPage> createState() => _MarksViewPageState();
 }
 
-class _UserViewPageState extends State<UserViewPage> {
+class _MarksViewPageState extends State<MarksViewPage> {
   // Initial Selected Value
 
   @override
   Widget build(BuildContext context) {
-    final args = (ModalRoute.of(context)!.settings.arguments ?? '') as User;
+    final args = (ModalRoute.of(context)!.settings.arguments ?? '') as Marks;
     return Scaffold(
-      appBar: CustomAppBar(context, "User details"),
+      appBar: CustomAppBar(context, "Marks details"),
       body: SingleChildScrollView(
         child: Stack(
           children: [
@@ -49,7 +49,7 @@ class _UserViewPageState extends State<UserViewPage> {
                       ],
                     ),
                     child: Image.asset(
-                      "lib/assets/images/User.png",
+                      "lib/assets/images/Marks.png",
                       width: 80,
                       height: 80,
                     ),
@@ -73,16 +73,6 @@ class _UserViewPageState extends State<UserViewPage> {
                       ],
                     ),
                   ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Text(
-                    args.usertype,
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
                   Container(
                     padding: EdgeInsets.all(10),
                     child: Column(
@@ -92,7 +82,7 @@ class _UserViewPageState extends State<UserViewPage> {
                               const EdgeInsets.only(left: 8.0, bottom: 8.0),
                           alignment: Alignment.topLeft,
                           child: Text(
-                            "User Information",
+                            "Marks Information",
                             style: TextStyle(
                               color: Colors.black87,
                               fontWeight: FontWeight.w500,
@@ -114,24 +104,19 @@ class _UserViewPageState extends State<UserViewPage> {
                                       color: Colors.white,
                                       tiles: [
                                         ListTile(
-                                          leading: Icon(Icons.email),
-                                          title: Text("Email"),
-                                          subtitle: Text(args.email),
+                                          leading: Icon(Icons.grade),
+                                          title: Text("Maths"),
+                                          subtitle: Text(args.maths),
                                         ),
                                         ListTile(
-                                          leading: Icon(Icons.phone),
-                                          title: Text("Phone"),
-                                          subtitle: Text(args.mobile_number),
+                                          leading: Icon(Icons.grade),
+                                          title: Text("Science"),
+                                          subtitle: Text(args.science),
                                         ),
                                         ListTile(
-                                          leading: Icon(Icons.location_on),
-                                          title: Text("Address"),
-                                          subtitle: Text(args.address),
-                                        ),
-                                        ListTile(
-                                          leading: Icon(Icons.list_alt),
-                                          title: Text("Age"),
-                                          subtitle: Text(args.age),
+                                          leading: Icon(Icons.grade),
+                                          title: Text("English"),
+                                          subtitle: Text(args.english),
                                         ),
                                       ],
                                     ),
@@ -143,11 +128,11 @@ class _UserViewPageState extends State<UserViewPage> {
                                   child: FloatingActionButton(
                                     foregroundColor: Colors.white,
                                     hoverColor: Colors.white,
-                                    tooltip: "edit user details",
+                                    tooltip: "edit marks details",
                                     onPressed: () {
                                       Navigator.pushNamed(
                                         context,
-                                        'user/editpage',
+                                        'mark/editpage',
                                         arguments: args,
                                       );
                                     },

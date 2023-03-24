@@ -1,6 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:araz_mobile_application/Helper/theme_helper.dart';
-import 'package:araz_mobile_application/Repository/MarksRepository.dart';
+import 'package:araz_mobile_application/Repository/UserRepository.dart';
 import 'package:araz_mobile_application/Widgets/CustomAppBar.dart';
 
 import 'package:araz_mobile_application/Widgets/HeaderWidget.dart';
@@ -11,27 +11,36 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:motion_toast/motion_toast.dart';
 import 'package:motion_toast/resources/arrays.dart';
 
-import '../Model/Marks.dart';
+import '../../Model/User.dart';
 
-class Markseditpage extends StatefulWidget {
-  Markseditpage({
+class Usereditpage extends StatefulWidget {
+  // final User userR;
+  Usereditpage({
     Key? key,
+    // required this.userR,
   }) : super(key: key);
 
   @override
-  State<Markseditpage> createState() => _MarkseditpageState();
+  State<Usereditpage> createState() => _UsereditpageState();
 }
 
-class _MarkseditpageState extends State<Markseditpage> {
+class _UsereditpageState extends State<Usereditpage> {
   TextEditingController _first_Name = TextEditingController();
   TextEditingController _last_Name = TextEditingController();
-  TextEditingController _maths = TextEditingController();
-  TextEditingController _science = TextEditingController();
-  TextEditingController _english = TextEditingController();
-  var MarksRepo = MarksRepository();
-  late Marks newMarks;
-  late Marks argsedit;
+  TextEditingController _email = TextEditingController();
+  TextEditingController _Usertype = TextEditingController();
+  TextEditingController _mobile_number = TextEditingController();
+  TextEditingController _age = TextEditingController();
+  TextEditingController _address = TextEditingController();
+  var UserRepo = UserRepository();
+  late User newUser;
+  late User argsedit;
   final _formKeyupdate = GlobalKey<FormState>();
+  final List<String> items = [
+    'Teacher',
+    'Parents',
+    'Student',
+  ];
 
   @override
   void initState() {
@@ -39,21 +48,25 @@ class _MarkseditpageState extends State<Markseditpage> {
     super.initState();
   }
 
-  void MarksUpdateHandler() async {
-    argsedit = (ModalRoute.of(context)!.settings.arguments ?? '') as Marks;
-    newMarks = Marks(
+  void UserUpdateHandler() async {
+    argsedit = (ModalRoute.of(context)!.settings.arguments ?? '') as User;
+    newUser = User(
       id: argsedit.id,
       first_Name: _first_Name.text,
       last_Name: _last_Name.text,
-      maths: _maths.text,
-      science: _science.text,
-      english: _english.text,
+      email: _email.text,
+      usertype: _Usertype.text,
+      mobile_number: _mobile_number.text,
+      address: _address.text,
+      age: _age.text,
     );
     if (_first_Name.text == null &&
         _last_Name.text == null &&
-        _maths.text == null &&
-        _science.text == null &&
-        _english.text == null) {
+        _Usertype.text == null &&
+        _email.text == null &&
+        _mobile_number.text == null &&
+        _address.text == null &&
+        _age.text == null) {
       MotionToast.error(
         title: const Text(
           'Error',
@@ -74,10 +87,7 @@ class _MarkseditpageState extends State<Markseditpage> {
         dismissable: false,
       ).show(context);
     }
-    MarksRepo.addMarks(newMarks);
-    print("sayanthan");
-
-    setState(() {});
+    UserRepo.addUser(newUser);
   }
 
   @override
@@ -85,22 +95,26 @@ class _MarkseditpageState extends State<Markseditpage> {
     super.dispose();
     _first_Name.dispose();
     _last_Name.dispose();
-    _maths.dispose();
-    _science.dispose();
-    _english.dispose();
+    _email.dispose();
+    _Usertype.dispose();
+    _mobile_number.dispose();
+    _age.dispose();
+    _address.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    argsedit = (ModalRoute.of(context)!.settings.arguments ?? '') as Marks;
+    argsedit = (ModalRoute.of(context)!.settings.arguments ?? '') as User;
     _first_Name.text = argsedit.first_Name;
     _last_Name.text = argsedit.last_Name;
-    _maths.text = argsedit.maths;
-    _science.text = argsedit.science;
-    _english.text = argsedit.english;
+    _email.text = argsedit.email;
+    _Usertype.text = argsedit.usertype;
+    _mobile_number.text = argsedit.mobile_number;
+    _age.text = argsedit.age;
+    _address.text = argsedit.address;
 
     return Scaffold(
-      appBar: CustomAppBar(context, "Edit marks page"),
+      appBar: CustomAppBar(context, "Edituserpage"),
       body: SingleChildScrollView(
         child: Stack(
           children: [
@@ -137,7 +151,7 @@ class _MarkseditpageState extends State<Markseditpage> {
                                   ],
                                 ),
                                 child: Image.asset(
-                                  "lib/assets/images/Marks.png",
+                                  "lib/assets/images/User.png",
                                   width: 80,
                                   height: 80,
                                 ),
@@ -206,7 +220,7 @@ class _MarkseditpageState extends State<Markseditpage> {
                         Container(
                           alignment: Alignment.topLeft,
                           child: Text(
-                            'Maths',
+                            'E-mail',
                             textAlign: TextAlign.left,
                             style: TextStyle(
                                 color: Colors.black,
@@ -216,32 +230,91 @@ class _MarkseditpageState extends State<Markseditpage> {
                         ),
                         Container(
                           child: TextFormField(
-                              controller: _maths,
-                              decoration:
-                                  ThemeHelper().textInputDecoration("Maths"),
-                              keyboardType: TextInputType.phone,
-                              validator: (val) {
-                                if (val!.isEmpty) {
-                                  return 'Please enter marks';
-                                } else if (!RegExp(r"^(\d+)*$").hasMatch(val)) {
-                                  return 'Please enter valid marks';
-                                }
+                            controller: _email,
+                            decoration:
+                                ThemeHelper().textInputDecoration("E-mail"),
+                            keyboardType: TextInputType.emailAddress,
+                            validator: (val) {
+                              if (val!.isEmpty) {
+                                return "Enter a email address";
+                              } else if (!RegExp(
+                                      r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?)*$")
+                                  .hasMatch(val)) {
+                                return "Enter a valid email address";
+                              } else {
                                 return null;
                               }
-                              //   if ((val!.length == 0) &&
-                              //       !RegExp(r"^(\d+)*$").hasMatch(val)) {
-                              //     return "Enter a valid phone number";
-                              //   }
-                              //   return null;
-                              // },
-                              ),
+                            },
+                          ),
                           decoration: ThemeHelper().inputBoxDecorationShaddow(),
                         ),
                         SizedBox(height: 10.0),
                         Container(
                           alignment: Alignment.topLeft,
                           child: Text(
-                            'Science',
+                            'UserType',
+                            textAlign: TextAlign.left,
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                        SizedBox(height: 10.0),
+                        TextFormField(
+                          validator: (val) {
+                            if ((val!.isEmpty)) {
+                              return "please Select UserType";
+                            }
+                            return null;
+                          },
+                          controller: _Usertype,
+                          decoration: InputDecoration(
+                            hintText: "select usertype",
+                            hintStyle: TextStyle(
+                              fontSize: 17,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'Open Sans',
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+                                borderSide: BorderSide(color: Colors.grey)),
+                            errorBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+                                borderSide:
+                                    BorderSide(color: Colors.red, width: 2.0)),
+                            focusedErrorBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+                                borderSide:
+                                    BorderSide(color: Colors.red, width: 2.0)),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10.0),
+                              borderSide: BorderSide(
+                                  color: Color.fromARGB(255, 0, 202, 248)),
+                            ),
+                            fillColor: Colors.white,
+                            filled: true,
+                            contentPadding: EdgeInsets.fromLTRB(10, 10, 20, 10),
+                            suffixIcon: PopupMenuButton<String>(
+                              icon: const Icon(Icons.arrow_drop_down),
+                              onSelected: (String value) {
+                                _Usertype.text = value;
+                              },
+                              itemBuilder: (BuildContext context) {
+                                return items
+                                    .map<PopupMenuItem<String>>((String value) {
+                                  return new PopupMenuItem(
+                                      child: new Text(value), value: value);
+                                }).toList();
+                              },
+                            ),
+                          ),
+                        ),
+                        SizedBox(height: 10.0),
+                        Container(
+                          alignment: Alignment.topLeft,
+                          child: Text(
+                            'Mobile Number',
                             textAlign: TextAlign.left,
                             style: TextStyle(
                                 color: Colors.black,
@@ -251,15 +324,17 @@ class _MarkseditpageState extends State<Markseditpage> {
                         ),
                         Container(
                           child: TextFormField(
-                              controller: _science,
-                              decoration:
-                                  ThemeHelper().textInputDecoration("Maths"),
+                              controller: _mobile_number,
+                              decoration: ThemeHelper()
+                                  .textInputDecoration("Mobile Number"),
                               keyboardType: TextInputType.phone,
                               validator: (val) {
                                 if (val!.isEmpty) {
-                                  return 'Please enter marks';
+                                  return 'Please enter mobile number';
+                                } else if (val.length != 10) {
+                                  return 'Please enter 10 digit mobile number';
                                 } else if (!RegExp(r"^(\d+)*$").hasMatch(val)) {
-                                  return 'Please enter valid marks';
+                                  return 'Please enter valid mobile number';
                                 }
                                 return null;
                               }),
@@ -269,7 +344,7 @@ class _MarkseditpageState extends State<Markseditpage> {
                         Container(
                           alignment: Alignment.topLeft,
                           child: Text(
-                            'English',
+                            'Age',
                             textAlign: TextAlign.left,
                             style: TextStyle(
                                 color: Colors.black,
@@ -279,18 +354,43 @@ class _MarkseditpageState extends State<Markseditpage> {
                         ),
                         Container(
                           child: TextFormField(
-                              controller: _english,
-                              decoration:
-                                  ThemeHelper().textInputDecoration("English"),
-                              keyboardType: TextInputType.phone,
-                              validator: (val) {
-                                if (val!.isEmpty) {
-                                  return 'Please enter marks';
-                                } else if (!RegExp(r"^(\d+)*$").hasMatch(val)) {
-                                  return 'Please enter valid marks';
-                                }
-                                return null;
-                              }),
+                            keyboardType: TextInputType.phone,
+                            controller: _age,
+                            decoration:
+                                ThemeHelper().textInputDecoration('Age'),
+                            validator: (val) {
+                              if ((val!.isEmpty)) {
+                                return "please Enter  age";
+                              }
+                              return null;
+                            },
+                          ),
+                          decoration: ThemeHelper().inputBoxDecorationShaddow(),
+                        ),
+                        SizedBox(height: 10.0),
+                        Container(
+                          alignment: Alignment.topLeft,
+                          child: Text(
+                            'Address',
+                            textAlign: TextAlign.left,
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                        Container(
+                          child: TextFormField(
+                            controller: _address,
+                            decoration:
+                                ThemeHelper().textInputDecoration('address'),
+                            validator: (val) {
+                              if ((val!.isEmpty)) {
+                                return "Enter a valid address";
+                              }
+                              return null;
+                            },
+                          ),
                           decoration: ThemeHelper().inputBoxDecorationShaddow(),
                         ),
                         SizedBox(height: 17.0),
@@ -303,7 +403,7 @@ class _MarkseditpageState extends State<Markseditpage> {
                               padding:
                                   const EdgeInsets.fromLTRB(40, 10, 40, 10),
                               child: Text(
-                                "UpdateMarks".toUpperCase(),
+                                "UpdateUser".toUpperCase(),
                                 style: TextStyle(
                                   fontSize: 20,
                                   fontWeight: FontWeight.bold,
@@ -313,21 +413,21 @@ class _MarkseditpageState extends State<Markseditpage> {
                             ),
                             onPressed: () {
                               if (_formKeyupdate.currentState!.validate()) {
-                                MarksUpdateHandler();
+                                UserUpdateHandler();
                                 Navigator.pushNamed(
                                   context,
-                                  'mark/markViewPage',
-                                  arguments: newMarks,
+                                  'user/userListPage',
+                                  // arguments: newUser,
                                 );
                                 MotionToast.success(
                                   title: const Text(
-                                    'Success',
+                                    'Successfully Updated user',
                                     style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
                                   description: const Text(
-                                    'sucessfully added user details  ',
+                                    'sucessfully Updated user details  ',
                                     style: TextStyle(
                                       fontSize: 13,
                                     ),

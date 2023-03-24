@@ -39,8 +39,24 @@ AppBar CustomAppBar(context, Titletext) {
     actions: [
       Container(
         margin: EdgeInsets.only(
+          right: 0,
           top: 8,
-          right: 16,
+        ),
+        child: IconButton(
+          icon: Icon(Icons.view_agenda_outlined),
+          iconSize: 30,
+          onPressed: () => {
+            Navigator.pushNamed(
+              context,
+              '/nav',
+            )
+          },
+        ),
+      ),
+      Container(
+        margin: EdgeInsets.only(
+          top: 8,
+          right: 8,
         ),
         child: Stack(
           children: <Widget>[
@@ -79,7 +95,7 @@ AppBar CustomAppBar(context, Titletext) {
             )
           ],
         ),
-      )
+      ),
     ],
   );
 }
