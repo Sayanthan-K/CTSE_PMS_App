@@ -41,6 +41,7 @@ dependencies:
   firebase_auth: ^4.2.10
   cloud_firestore: ^4.4.4
   motion_toast: ^2.6.5
+  awesome_snackbar_content: ^0.1.2
 
 dev_dependencies:
   flutter_test:

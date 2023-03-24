@@ -1,7 +1,7 @@
 import 'package:araz_mobile_application/Model/Marks.dart';
 import 'package:araz_mobile_application/Repository/MarksRepository.dart';
-import 'package:araz_mobile_application/Screens/MarksViewPage.dart';
-import 'package:araz_mobile_application/Screens/Marksaddpage.dart';
+import 'package:araz_mobile_application/Screens/Marks/MarksViewPage.dart';
+import 'package:araz_mobile_application/Screens/Marks/Marksaddpage.dart';
 import 'package:araz_mobile_application/Widgets/CustomAppBar.dart';
 import 'package:araz_mobile_application/Widgets/custom_AlertDialogbox.dart';
 import 'package:flutter/material.dart';

@@ -11,7 +11,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:motion_toast/motion_toast.dart';
 import 'package:motion_toast/resources/arrays.dart';
 
-import '../Model/School.dart';
+import '../../Model/School.dart';
 
 class SchoolEditPage extends StatefulWidget {
   // final School userR;

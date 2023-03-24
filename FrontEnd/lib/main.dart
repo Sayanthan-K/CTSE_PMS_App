@@ -1,23 +1,26 @@
 // import 'dart:js';
 
 import 'package:araz_mobile_application/Constants/Colors.dart';
-import 'package:araz_mobile_application/Screens/AboutPage.dart';
-import 'package:araz_mobile_application/Screens/MarksAddPage.dart';
-import 'package:araz_mobile_application/Screens/MarksEditPage.dart';
-import 'package:araz_mobile_application/Screens/MarksListView.dart';
-import 'package:araz_mobile_application/Screens/MarksViewPage.dart';
-import 'package:araz_mobile_application/Screens/NotificationPage.dart';
+
+import 'package:araz_mobile_application/Screens/Marks/Marksaddpage.dart';
+import 'package:araz_mobile_application/Screens/Marks/Markseditpage.dart';
+import 'package:araz_mobile_application/Screens/Schools/AboutPage.dart';
+
+import 'package:araz_mobile_application/Screens/Marks/MarksListView.dart';
+import 'package:araz_mobile_application/Screens/Marks/MarksViewPage.dart';
+import 'package:araz_mobile_application/Screens/Marks/NotificationPage.dart';
 import 'package:araz_mobile_application/Screens/Privacy_policy.dart';
-import 'package:araz_mobile_application/Screens/SchoolAddPage.dart';
-import 'package:araz_mobile_application/Screens/SchoolEditPage.dart';
-import 'package:araz_mobile_application/Screens/SchoolListView.dart';
-import 'package:araz_mobile_application/Screens/SchoolViewPage.dart';
-import 'package:araz_mobile_application/Screens/SignupPage.dart';
-import 'package:araz_mobile_application/Screens/SplashScreen.dart';
-import 'package:araz_mobile_application/Screens/UserListView.dart';
-import 'package:araz_mobile_application/Screens/UserViewPage.dart';
-import 'package:araz_mobile_application/Screens/Usereditpage.dart';
-import 'package:araz_mobile_application/Screens/useraddpage.dart';
+import 'package:araz_mobile_application/Screens/Schools/SchoolAddPage.dart';
+import 'package:araz_mobile_application/Screens/Schools/SchoolEditPage.dart';
+import 'package:araz_mobile_application/Screens/Schools/SchoolListView.dart';
+import 'package:araz_mobile_application/Screens/Schools/SchoolViewPage.dart';
+import 'package:araz_mobile_application/Screens/auth/SignInpage.dart';
+import 'package:araz_mobile_application/Screens/auth/SignupPage.dart';
+import 'package:araz_mobile_application/Screens/Users/SplashScreen.dart';
+import 'package:araz_mobile_application/Screens/Users/UserListView.dart';
+import 'package:araz_mobile_application/Screens/Users/UserViewPage.dart';
+import 'package:araz_mobile_application/Screens/Users/Usereditpage.dart';
+import 'package:araz_mobile_application/Screens/Users/useraddpage.dart';
 import 'package:araz_mobile_application/Widgets/Bottom_navigation_Bar.dart';
 import 'package:araz_mobile_application/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -49,68 +52,32 @@ class LoginUiApp extends StatelessWidget {
       ),
 
       initialRoute: '/',
-      onGenerateRoute: (RouteSettings settings) {
-        WidgetBuilder builder;
-        switch (settings.name) {
-          case '/':
-            builder = (BuildContext _) => SplashScreen(title: "title");
-            break;
-          case '/nav':
-            builder = (BuildContext _) => Bottom_navigation_Bar();
-            break;
-          case 'user/userListPage':
-            builder = (BuildContext _) => new UserListView();
-            break;
-          case 'user/userViewPage':
-            builder = (BuildContext _) => new UserViewPage();
-            break;
-          case 'user/Addpage':
-            builder = (BuildContext _) => new UseraddPage();
-            break;
-          case 'user/editpage':
-            builder = (BuildContext _) => new Usereditpage();
-            break;
-          case 'mark/markListPage':
-            builder = (BuildContext _) => new MarksListView();
-            break;
-          case 'mark/markViewPage':
-            builder = (BuildContext _) => new MarksViewPage();
-            break;
-          case 'mark/Addpage':
-            builder = (BuildContext _) => new MarksaddPage();
-            break;
-          case 'mark/editpage':
-            builder = (BuildContext _) => new Markseditpage();
-            break;
-          case 'school/schoolListPage':
-            builder = (BuildContext _) => new SchoolListView();
-            break;
-          case 'school/Addpage':
-            builder = (BuildContext _) => new SchoolAddPage();
-            break;
-          case 'school/schoolViewPage':
-            builder = (BuildContext _) => new SchoolViewPage();
-            break;
-          case 'school/editpage':
-            builder = (BuildContext _) => new SchoolEditPage();
-            break;
-          case 'Admin/Notification':
-            builder = (BuildContext _) => new NotificationPage();
-            break;
-          case 'Admin/About':
-            builder = (BuildContext _) => new AboutPage();
-            break;
-          case 'Admin/Privacy policy':
-            builder = (BuildContext _) => new Privacy_policy();
-            break;
-          case 'Admin/auth/Signup':
-            builder = (BuildContext _) => new SignUpPage();
-            break;
+      routes: {
+        '/': (context) => SplashScreen(title: "title"),
+        '/nav': (context) => Bottom_navigation_Bar(),
 
-          default:
-            throw new Exception('Invalid route: ${settings.name}');
-        }
-        return new MaterialPageRoute(builder: builder, settings: settings);
+        //auth
+        // 'auth/signIn': (context) => SignInPage(),
+        'Admin/auth/Signup': (context) => SignUpPage(),
+        // user
+        'user/userListPage': (context) => UserListView(),
+        'user/userViewPage': (context) => UserViewPage(),
+        'user/Addpage': (context) => UseraddPage(),
+        'user/editpage': (context) => Usereditpage(),
+        //school
+        'school/schoolListPage': (context) => SchoolListView(),
+        'school/schoolViewPage': (context) => SchoolViewPage(),
+        'school/Addpage': (context) => SchoolAddPage(),
+        'school/editpage': (context) => SchoolEditPage(),
+        // marks
+        'mark/markListPage': (context) => MarksListView(),
+        'mark/markViewPage': (context) => MarksViewPage(),
+        'mark/Addpage': (context) => MarksaddPage(),
+        'mark/editpage': (context) => Markseditpage(),
+        // Admin
+        'Admin/Notification': (context) => NotificationPage(),
+        'Admin/About': (context) => AboutPage(),
+        'Admin/Privacy policy': (context) => Privacy_policy(),
       },
     );
   }

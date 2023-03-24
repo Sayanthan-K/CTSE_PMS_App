@@ -1,10 +1,10 @@
 import 'package:araz_mobile_application/Model/Admin.dart';
-import 'package:araz_mobile_application/Screens/SignInpage.dart';
+import 'package:araz_mobile_application/Screens/auth/SignInpage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../Constants/Colors.dart';
 import '../Screens/Dashboard.dart';
-import '../Screens/Profile_Page.dart';
+import '../Screens/Users/Profile_Page.dart';
 
 class Bottom_navigation_Bar extends StatefulWidget {
   // static const String routeName = '/home';
