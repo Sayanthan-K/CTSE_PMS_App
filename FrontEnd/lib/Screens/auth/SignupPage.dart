@@ -1,6 +1,5 @@
 import 'package:araz_mobile_application/Helper/theme_helper.dart';
 import 'package:araz_mobile_application/Widgets/HeaderWidget.dart';
-import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -8,6 +7,7 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:motion_toast/motion_toast.dart';
 import 'package:motion_toast/resources/arrays.dart';
+import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});

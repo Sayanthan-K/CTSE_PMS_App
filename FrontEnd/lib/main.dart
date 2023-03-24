@@ -1,15 +1,19 @@
 // import 'dart:js';
 
 import 'package:araz_mobile_application/Constants/Colors.dart';
-
-import 'package:araz_mobile_application/Screens/Marks/Marksaddpage.dart';
-import 'package:araz_mobile_application/Screens/Marks/Markseditpage.dart';
-import 'package:araz_mobile_application/Screens/Schools/AboutPage.dart';
-
+import 'package:araz_mobile_application/Screens/Announcement/AddAnnouncement.dart';
+import 'package:araz_mobile_application/Screens/Announcement/AnnouncementListView.dart';
+import 'package:araz_mobile_application/Screens/Announcement/AnnouncementView.dart';
+import 'package:araz_mobile_application/Screens/Announcement/EditAnnouncement.dart';
+import 'package:araz_mobile_application/Screens/Announcement/PreschoolListView.dart';
 import 'package:araz_mobile_application/Screens/Marks/MarksListView.dart';
 import 'package:araz_mobile_application/Screens/Marks/MarksViewPage.dart';
+import 'package:araz_mobile_application/Screens/Marks/Marksaddpage.dart';
+import 'package:araz_mobile_application/Screens/Marks/Markseditpage.dart';
 import 'package:araz_mobile_application/Screens/Marks/NotificationPage.dart';
-import 'package:araz_mobile_application/Screens/Privacy_policy.dart';
+
+import 'package:araz_mobile_application/Screens/Announcement/Privacy_policy.dart';
+import 'package:araz_mobile_application/Screens/Schools/AboutPage.dart';
 import 'package:araz_mobile_application/Screens/Schools/SchoolAddPage.dart';
 import 'package:araz_mobile_application/Screens/Schools/SchoolEditPage.dart';
 import 'package:araz_mobile_application/Screens/Schools/SchoolListView.dart';
@@ -52,6 +56,7 @@ class LoginUiApp extends StatelessWidget {
       ),
 
       initialRoute: '/',
+
       routes: {
         '/': (context) => SplashScreen(title: "title"),
         '/nav': (context) => Bottom_navigation_Bar(),
@@ -78,6 +83,14 @@ class LoginUiApp extends StatelessWidget {
         'Admin/Notification': (context) => NotificationPage(),
         'Admin/About': (context) => AboutPage(),
         'Admin/Privacy policy': (context) => Privacy_policy(),
+        //Anncounment
+        '/Announcements/pre-schoolList': (context) => PreschoolListView(),
+        '/Announcements/AnnouncementslistPage': (context) =>
+            AnnouncementListView(),
+        '/Announcements/AnnouncementsView': (context) => AnnouncementView(),
+
+        '/Announcements/AddAnnouncements': (context) => AddAnnouncement(),
+        '/Announcements/EditAnnouncements': (context) => EditAnnouncement(),
       },
     );
   }
