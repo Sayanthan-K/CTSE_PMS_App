@@ -1,7 +1,5 @@
 import 'package:araz_mobile_application/Model/School.dart';
 import 'package:araz_mobile_application/Repository/SchoolRepository.dart';
-import 'package:araz_mobile_application/Screens/SchoolViewPage.dart';
-import 'package:araz_mobile_application/Screens/SchoolAddPage.dart';
 import 'package:araz_mobile_application/Widgets/CustomAppBar.dart';
 import 'package:araz_mobile_application/Widgets/custom_AlertDialogbox.dart';
 import 'package:flutter/material.dart';
