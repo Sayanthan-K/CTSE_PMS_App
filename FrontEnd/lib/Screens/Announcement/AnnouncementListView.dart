@@ -1,8 +1,8 @@
+import 'dart:async';
+
 import 'package:araz_mobile_application/Model/Announcement.dart';
 import 'package:araz_mobile_application/Model/School.dart';
-
 import 'package:araz_mobile_application/Repository/Announcement.dart';
-
 import 'package:araz_mobile_application/Widgets/CustomAppBar.dart';
 import 'package:araz_mobile_application/Widgets/custom_AlertDialogbox.dart';
 import 'package:flutter/material.dart';
@@ -22,45 +22,49 @@ class _AnnouncementListViewState extends State<AnnouncementListView> {
   late Stream<List<Announcement>> Announcement_list;
 
   var Announcement_Repo = AnnouncementRepository();
+
   void deleteAnnouncement(Announcement id) {
     setState(() {
       Announcement_Repo.deleteAnnouncement(id);
       Navigator.of(context).pop();
       MotionToast.delete(
         title: const Text(
-          'Successfully Deleted',
+          'Successfully Deleted ',
           style: TextStyle(
             fontWeight: FontWeight.bold,
           ),
         ),
-        description: const Text('The item is deleted'),
+        description: const Text('The Anncouncement is deleted'),
         animationType: AnimationType.fromTop,
         position: MotionToastPosition.top,
       ).show(context);
     });
   }
 
-  void loaddata() {
-    Announcement_list = Announcement_Repo.AllAnnouncement();
-
-    // print(Announcement_list.length);
-  }
-
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    loaddata();
+
+    Future.delayed(Duration.zero, () {
+      final school =
+          (ModalRoute.of(context)!.settings.arguments ?? '') as School;
+      print(school.id);
+
+      setState(() {
+        Announcement_list = Announcement_Repo.AllAnnouncement(school.id);
+      });
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    final school = (ModalRoute.of(context)!.settings.arguments ?? '') as School;
-    print(school);
+    final schoolId =
+        (ModalRoute.of(context)!.settings.arguments ?? '') as School;
 
     final customheight = MediaQuery.of(context).size.height;
     return Scaffold(
-      appBar: CustomAppBar(context, "ALL Announcement"),
+      appBar: CustomAppBar(context, "Announcements"),
       body: Stack(children: [
         Container(
           padding: EdgeInsets.all(10),
@@ -73,7 +77,7 @@ class _AnnouncementListViewState extends State<AnnouncementListView> {
                   if (snapshot.data.isEmpty) {
                     return Center(
                       child: Text(
-                        "No data found",
+                        "No Announcements !!!",
                         style: TextStyle(
                           fontFamily: 'Opensan',
                           fontSize: 20,
@@ -90,7 +94,7 @@ class _AnnouncementListViewState extends State<AnnouncementListView> {
                         return Container(
                           padding: EdgeInsets.all(3),
                           margin: EdgeInsets.all(3),
-                          height: customheight * 0.12,
+                          height: customheight * 0.13,
                           width: MediaQuery.of(context).size.width,
                           child: InkWell(
                             onTap: () {
@@ -105,9 +109,27 @@ class _AnnouncementListViewState extends State<AnnouncementListView> {
                               child: ListTile(
                                 textColor: Colors.white,
                                 leading: Image.asset(
-                                  "lib/assets/images/School.png",
+                                  "lib/assets/images/announcement.png",
                                   width: 40.0,
                                   height: 40.0,
+                                ),
+                                subtitle: Flexible(
+                                  fit: FlexFit.loose,
+                                  child: Text.rich(
+                                    TextSpan(
+                                      children: [
+                                        TextSpan(
+                                          text: '${snapshot.data![index].message}' +
+                                              "\n" +
+                                              '${snapshot.data![index].date}' +
+                                              "  ",
+                                          style: TextStyle(
+                                            fontSize: 15,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
                                 ),
                                 title: Flexible(
                                   fit: FlexFit.loose,
@@ -137,9 +159,8 @@ class _AnnouncementListViewState extends State<AnnouncementListView> {
                                           context: context,
                                           builder: (context) =>
                                               custom_AlertDialogbox(
-                                                  bodymessgae:
-                                                      "Do you want delete School",
-                                                  title: "Comformation",
+                                                  bodymessgae: "Are you sure ?",
+                                                  title: "Alert",
                                                   leftbuttontext: "Cancel",
                                                   leftOnTap: (() {
                                                     Navigator.of(context).pop();
@@ -174,7 +195,7 @@ class _AnnouncementListViewState extends State<AnnouncementListView> {
               Navigator.pushNamed(
                 context,
                 '/Announcements/AddAnnouncements',
-                arguments: school,
+                arguments: schoolId,
               );
             },
             tooltip: "add list item",
