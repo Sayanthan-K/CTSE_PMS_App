@@ -88,7 +88,6 @@ class LoginUiApp extends StatelessWidget {
         '/Announcements/AnnouncementslistPage': (context) =>
             AnnouncementListView(),
         '/Announcements/AnnouncementsView': (context) => AnnouncementView(),
-
         '/Announcements/AddAnnouncements': (context) => AddAnnouncement(),
         '/Announcements/EditAnnouncements': (context) => EditAnnouncement(),
       },

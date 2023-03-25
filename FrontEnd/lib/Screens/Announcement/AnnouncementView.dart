@@ -51,7 +51,7 @@ class _AnnouncementViewState extends State<AnnouncementView> {
                       ],
                     ),
                     child: Image.asset(
-                      "lib/assets/images/School.png",
+                      "lib/assets/images/announcement.png",
                       width: 80,
                       height: 80,
                     ),

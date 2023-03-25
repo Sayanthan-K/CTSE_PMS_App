@@ -52,6 +52,11 @@ class _SchoolEditPageState extends State<EditAnnouncement> {
     );
     print(newAnnouncement);
     AnnouncementRepo.updateAnnouncement(newAnnouncement);
+    Navigator.pushNamed(
+      context,
+      '/Announcements/AnnouncementsView',
+      arguments: newAnnouncement,
+    );
   }
 
   @override
@@ -108,7 +113,7 @@ class _SchoolEditPageState extends State<EditAnnouncement> {
                                   ],
                                 ),
                                 child: Image.asset(
-                                  "lib/assets/images/School.png",
+                                  "lib/assets/images/announcement.png",
                                   width: 80,
                                   height: 80,
                                 ),
@@ -279,7 +284,11 @@ class _SchoolEditPageState extends State<EditAnnouncement> {
                             onPressed: () {
                               if (_formKeyupdate.currentState!.validate()) {
                                 SchoolUpdateHandler();
-                       
+                                // Navigator.pushNamed(
+                                //   context,
+                                //   '/Announcements/AnnouncementslistPage',
+                                //   // arguments: schoolId,
+                                // );
                                 MotionToast.success(
                                   title: const Text(
                                     'Success',
@@ -288,7 +297,7 @@ class _SchoolEditPageState extends State<EditAnnouncement> {
                                     ),
                                   ),
                                   description: const Text(
-                                    'sucessfully added school details  ',
+                                    'sucessfully post the Annconcement',
                                     style: TextStyle(
                                       fontSize: 13,
                                     ),

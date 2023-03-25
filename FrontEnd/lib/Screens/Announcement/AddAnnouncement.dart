@@ -2,7 +2,6 @@ import 'package:araz_mobile_application/Helper/theme_helper.dart';
 import 'package:araz_mobile_application/Model/Announcement.dart';
 import 'package:araz_mobile_application/Model/School.dart';
 import 'package:araz_mobile_application/Repository/Announcement.dart';
-import 'package:araz_mobile_application/Repository/SchoolRepository.dart';
 import 'package:araz_mobile_application/Widgets/CustomAppBar.dart';
 import 'package:araz_mobile_application/Widgets/HeaderWidget.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
@@ -27,19 +26,17 @@ class _AddAnnouncementState extends State<AddAnnouncement> {
   var AnnouncementRepo = AnnouncementRepository();
 
   void SchoolAddHandler() async {
-    final announcement =
-        (ModalRoute.of(context)!.settings.arguments ?? '') as Announcement;
+    School sid = (ModalRoute.of(context)!.settings.arguments ?? '') as School;
     var newAnnouncement = new Announcement(
       id: DateTime.now().microsecondsSinceEpoch.toString(),
-      schoolid: announcement.schoolid,
+      schoolid: sid.id,
       date: _date.text,
       title: _title.text,
       message: _message.text,
     );
 
     AnnouncementRepo.addAnnouncement(newAnnouncement);
-
-    setState(() {});
+    print(newAnnouncement);
   }
 
   final _formKeyAdd = GlobalKey<FormState>();
@@ -55,10 +52,10 @@ class _AddAnnouncementState extends State<AddAnnouncement> {
 
   @override
   Widget build(BuildContext context) {
-    final announcement =
-        (ModalRoute.of(context)!.settings.arguments ?? '') as Announcement;
+    final schoolId =
+        (ModalRoute.of(context)!.settings.arguments ?? '') as School;
     return Scaffold(
-      appBar: CustomAppBar(context, "Addschoolpage"),
+      appBar: CustomAppBar(context, "Add Announcement"),
       body: SingleChildScrollView(
         child: Stack(
           children: [
@@ -95,7 +92,7 @@ class _AddAnnouncementState extends State<AddAnnouncement> {
                                   ],
                                 ),
                                 child: Image.asset(
-                                  "lib/assets/images/School.png",
+                                  "lib/assets/images/announcement.png",
                                   width: 80,
                                   height: 80,
                                 ),
@@ -250,8 +247,8 @@ class _AddAnnouncementState extends State<AddAnnouncement> {
                                 SchoolAddHandler();
                                 Navigator.pushNamed(
                                   context,
-                                  '/Announcements/AnnouncementsView',
-                                  arguments: announcement,
+                                  '/Announcements/AnnouncementslistPage',
+                                  arguments: schoolId,
                                 );
                                 MotionToast.success(
                                   title: const Text(

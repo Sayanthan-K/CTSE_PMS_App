@@ -34,7 +34,7 @@ class _PreschoolListViewState extends State<PreschoolListView> {
   Widget build(BuildContext context) {
     final customheight = MediaQuery.of(context).size.height;
     return Scaffold(
-      appBar: CustomAppBar(context, "ALL School views"),
+      appBar: CustomAppBar(context, "Preschools"),
       body: Stack(children: [
         Container(
           padding: EdgeInsets.all(10),
@@ -85,11 +85,28 @@ class _PreschoolListViewState extends State<PreschoolListView> {
                                       children: [
                                         TextSpan(
                                           text:
-                                              'Preschool Name:  ${snapshot.data![index].name}' +
+                                              'Preschool: ${snapshot.data![index].name}' +
                                                   " ",
                                           style: TextStyle(
-                                              fontSize: 20,
+                                              fontSize: 19,
                                               fontWeight: FontWeight.bold),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                subtitle: Flexible(
+                                  fit: FlexFit.loose,
+                                  child: Text.rich(
+                                    TextSpan(
+                                      children: [
+                                        TextSpan(
+                                          text:
+                                              'Click here to view the announcements' +
+                                                  " ",
+                                          style: TextStyle(
+                                            fontSize: 17,
+                                          ),
                                         ),
                                       ],
                                     ),
